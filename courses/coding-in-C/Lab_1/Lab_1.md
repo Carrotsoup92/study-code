@@ -134,7 +134,7 @@ However, in the best case you tried both environments to build the program and r
    * Note II: If you use GitHub codespaces, you keep using the VSCode terminal from the start.
 2. Enter the following command to build the program:
 ``` bash
-gcc helloWorld.c -o helloWorld.o
+gcc helloWorld.c -o helloWorld
 ```
 3. Explanation of the command:
    * gcc: The command to execute the compiler
