@@ -2,14 +2,22 @@
 
 int fieldNumber = 8;
 int i;
-int j;
 
 int main()
 {
-    for (i = 0 ; i < 7; i++){
-        for (j = 0; j < 7; j++){
-            printf("%a%c", 'A' + fieldNumber); 
-        }
+    for (i = 0 ; i < 8; i++){
+        
+        printf("%c%d\t", 'A', fieldNumber); 
+        printf("%c%d\t", 'B', fieldNumber);
+        printf("%c%d\t", 'C', fieldNumber);
+        printf("%c%d\t", 'D', fieldNumber);
+        printf("%c%d\t", 'E', fieldNumber);
+        printf("%c%d\t", 'F', fieldNumber);
+        printf("%c%d\t", 'G', fieldNumber);
+        printf("%c%d\n", 'H', fieldNumber);
+         
+        printf("\n"); 
+        
         fieldNumber--;
     }
 }
