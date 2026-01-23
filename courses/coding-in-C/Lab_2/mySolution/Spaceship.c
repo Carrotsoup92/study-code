@@ -10,7 +10,7 @@ float Reichweite = 56425.658;
 
 int main() {
     printf("Enter Class, Crew Count, Mission Days:\n");
-    scanf("%s", Schiff);
+    scanf("%29s", Schiff);
     scanf("%d", &Besatzung);
     scanf("%d", &Missionstage);
 
