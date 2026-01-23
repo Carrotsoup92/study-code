@@ -1,13 +1,19 @@
 #include <stdio.h>
 
-char Schiff [] = "NCC-1701-D";
-int Besatzung = 1365;
-int Missionstage = 1253;
+char Schiff [30];
+int Besatzung;
+int Missionstage;
+
 long Entfernung = 6280000000;  
 float lichtgeschwindigkeit = 32.9;
 float Reichweite = 56425.658;
 
 int main() {
+    printf("Enter Class, Crew Count, Mission Days:\n");
+    scanf("%s", Schiff);
+    scanf("%d", &Besatzung);
+    scanf("%d", &Missionstage);
+
     printf("%-30s %s\n", "Name", "Value");
     printf("----------------------------------------\n");
     printf("%-30s %s\n", "Class", Schiff);
