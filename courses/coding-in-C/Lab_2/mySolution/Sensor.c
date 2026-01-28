@@ -33,5 +33,6 @@ int main() {
     if (code[5] == 1){
         printf("There in an undervoltage.\n");
     }
-       
+    int value = status & 0xF;
+    printf("The messured value is: %d", value);
 }
