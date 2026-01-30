@@ -11,7 +11,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:/Meine_Programme/msys64/uctr64/bin/gcc.exe",
+            "compilerPath": "C:/msys64/uctr64/bin/gcc.exe",
             "intelliSenseMode": "windows-gcc-x64"
         },
         {
