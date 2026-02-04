@@ -7,12 +7,19 @@ double sum = 0;
 
 int main() {    
     printf("Enter first number: ");
-    scanf("%lf", &value1);
-    printf("Enter second number: ");
-    scanf("%lf", &value2);
-    printf("Enter operator (+, -, *, /): ");
-    scanf(" %c", &operator);
+    if (scanf("%f", &value1) != 1)   // Check if the input is a valid float
+    {
+        printf("Invalid input for the first number.\n");
+        return 1;    // Exit main with an error code
+    }
 
+    printf("Enter second number: ");
+    if (scanf("%f", &value2) != 1)  // Check if the input is a valid float
+    {
+        printf("Invalid input for the second number.\n");
+        return 1;    // Exit main with an error code, 
+    }
+    
     if (operator == '+'|| operator == '-' ||operator == '*' || operator == '/') {
     }
     else {
