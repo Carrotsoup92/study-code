@@ -35,6 +35,9 @@ float sum = 0;
         return 1;    // Exit main with an error code, 
     }
     
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &operator);
+
     if (operator == '+'|| operator == '-' ||operator == '*' || operator == '/') {
     }
     else {
@@ -46,11 +49,11 @@ float sum = 0;
    switch (operator)
    {
    case '+':
-        sum = mySum1(value1, value2);
+        sum = mySum(value1, value2);
         printf("Result: %.2f\n", sum);
         break;
    case '-':
-        sum = mySub;
+        sum = mySub(value1, value2);
         printf("Result: %.2f\n", sum);
         break;
    case '*':

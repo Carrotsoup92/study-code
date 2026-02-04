@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-double value1 = 0;
-double value2 = 0;
+float value1 = 0;
+float value2 = 0;
 char operator = 0;
-double sum = 0;
+float sum = 0;
 
 int main() {    
     printf("Enter first number: ");
@@ -19,7 +19,9 @@ int main() {
         printf("Invalid input for the second number.\n");
         return 1;    // Exit main with an error code, 
     }
-    
+
+     printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &operator);
     if (operator == '+'|| operator == '-' ||operator == '*' || operator == '/') {
     }
     else {
@@ -32,20 +34,20 @@ int main() {
    {
    case '+':
         sum = value1 + value2;
-        printf("Result: %.2lf\n", sum);
+        printf("Result: %.2f\n", sum);
         break;
    case '-':
         sum = value1 - value2;
-        printf("Result: %.2lf\n", sum);
+        printf("Result: %.2f\n", sum);
         break;
    case '*':
         sum = value1 * value2;
-        printf("Result: %.2lf\n", sum);
+        printf("Result: %.2f\n", sum);
         break;
    case '/':
         if (value2 != 0) {
             sum = value1 / value2;
-            printf("Result: %.2lf\n", sum);
+            printf("Result: %.2f\n", sum);
         } else {
             printf("Error: Division by zero\n");
         }
