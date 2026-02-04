@@ -21,24 +21,29 @@ int main() {
         scanf(" %c", &operator);
     }
 
-    if (operator == '+') {
+   switch (operator)
+   {
+   case '+':
         sum = value1 + value2;
         printf("Result: %.2lf\n", sum);
-    }
-    else if (operator == '-') {
+        break;
+   case '-':
         sum = value1 - value2;
         printf("Result: %.2lf\n", sum);
-    }
-    else if (operator == '*') {
+        break;
+   case '*':
         sum = value1 * value2;
         printf("Result: %.2lf\n", sum);
-    }
-    else if (operator == '/') {
+        break;
+   case '/':
         if (value2 != 0) {
             sum = value1 / value2;
             printf("Result: %.2lf\n", sum);
         } else {
             printf("Error: Division by zero\n");
         }
-    }
+        break;
+   default:
+    break;
+   }
 }
