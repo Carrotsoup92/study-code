@@ -1,4 +1,5 @@
 // palin.c
+// funktions for palindrome.c
 
 #include <stdio.h>
 #include "palin.h"
