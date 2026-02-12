@@ -7,13 +7,19 @@
 
 int main() {
     char word[100];
-    char palindrome[100];
+    char stop = '\0';
+    
+    printf("Please enter your word (max 100 characters): ");
 
-    printf("Please enter your word (max 100 characters):");
     fgets(word, sizeof(word), stdin);
-    int lenght = sizeof(word);
+    word[strcspn(word, "\n")] = '\0';
+   
+    int length = get_length(word, stop);
+    char palindrome[length];
 
+    array_swap(word, palindrome, length);
 
-    printf("%s", word);
-    printf("%d", lenght);
+    char check = check_palindrom(word, palindrome, length);
+
+    answer(check, word);
 }
