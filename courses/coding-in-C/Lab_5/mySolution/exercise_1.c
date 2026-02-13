@@ -1,3 +1,9 @@
+/*
+ * File: exersice.c
+ * Description: Work with pointers
+ */
+
+
 #include <stdio.h>
 
 int main(void) {
