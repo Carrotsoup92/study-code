@@ -17,8 +17,8 @@ int main() {
     int *p_temp_array = temp_array;
 
     //set particle(1) by index 2,4,6
-    for (int i = 0; i < 3; i++){  
-        int particle = 2;  
+    int particle = 2; 
+    for (int i = 0; i < 3; i++){    
         sim_array[particle] = 1;
         particle += 2;
     }
