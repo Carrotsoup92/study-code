@@ -58,8 +58,8 @@ int main() {
     }
 
     for (int i = 0; i<5; i++) {
-        fputc('i', file_1); // write a single character to the file
-        fputc('i +' 1, file_1); // write a single character to the file
+        fputc('0' + i, file_1); // write a single character to the file
+        fputc('0' + i + 1, file_1); // write a single character to the file
         fputc('\n', file_1); // write a newline character to the file
     }
 
