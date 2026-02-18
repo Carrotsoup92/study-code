@@ -8,7 +8,7 @@
 int main() {
 
     //open fiel for writing
-    FILE *file = fopen("Text_s1.txt", "w+");
+    FILE *file = fopen("Text_s1.txt", "w+");  // w+ read and write, file is recreated or overwritten
 
     // check if file opened successfully
     if (file == NULL) {
@@ -63,6 +63,18 @@ int main() {
         fputc('\n', file_1); // write a newline character to the file
     }
 
+    rewind(file_1);
+
+    int a = 0;
+    int b = 0;
+
+    while (fscanf(file_1, "%1d %1d", &a, &b) == 2) {
+        printf("%d, %d\n", a, b);
+
+    }
+
+    fscanf(file_1, "%1d %1d", &a, &b );
+    printf("%d, %d", a, b);
 
     fclose(file_1); // close the file
     return 0;
