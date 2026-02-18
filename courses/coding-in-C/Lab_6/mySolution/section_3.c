@@ -33,7 +33,7 @@ int main() {
 
     FILE *file1 = fopen("C:/Meine_Projekte/VS_Code/study-code/courses/coding-in-C/Lab_6/sensor1.txt", "r"); // r to read only
     check_file(file1);
-    FILE *file2 = fopen("../coding-in-C/Lab_6/sensor2.txt", "r");
+    FILE *file2 = fopen("../sensor2.txt", "r");
     check_file(file2);
 
     struct sensor s1 = {.id = 1, .threshold = 0.8};
