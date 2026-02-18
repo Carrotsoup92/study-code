@@ -8,7 +8,7 @@
 int main() {
 
     //open fiel for writing
-    FILE *file = fopen("Text_s1.txt", "w+");  // w+ read and write, file is recreated or overwritten
+    FILE *file = fopen("../Text/text_s1.txt", "r+");  // w+ read and write, file is recreated or overwritten, r+ read and write, file must exist
 
     // check if file opened successfully
     if (file == NULL) {
@@ -49,7 +49,7 @@ int main() {
     fclose(file); // close the file
 
     //open fiel for writing
-    FILE *file_1 = fopen("Text_s2.txt", "w+");
+    FILE *file_1 = fopen("../text/text_s2.txt", "r+");
 
     // check if file opened successfully
     if (file_1 == NULL) {
@@ -77,5 +77,6 @@ int main() {
     printf("%d, %d", a, b);
 
     fclose(file_1); // close the file
+
     return 0;
 }
