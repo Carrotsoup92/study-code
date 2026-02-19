@@ -66,7 +66,12 @@ int main() {
     //     printf("%d\n", s2.object_detection[i]);
     // }
 
-    
+    for (int i = 0; i < length; i++){
+        if(s1.object_detection[i] < s1.object_detection[i + 1]){
+            printf("Start: %.2f s ", s1.data[i +1].time);
+        }
+
+    }
 
     return 0;
 }
