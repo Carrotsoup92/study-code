@@ -39,24 +39,37 @@ int main() {
     struct sensor s1 = {.id = 1, .threshold = 0.8};
     struct sensor s2 = {.id = 2, .threshold = 0.7};
 
-    int length = 10;
+    int length = 760;
 
     for (int i = 0; i < length; i++){
-        fscanf(file1, "%f %lf", &s1.data->time, &s1.data->porbability);
-        printf("%.2f, %.3lf\n", s1.data->time, s1.data->porbability);
+        fscanf(file1, "%f %lf", &s1.data[i].time, &s1.data[i].porbability);
+        fscanf(file2, "%f %lf", &s2.data[i].time, &s2.data[i].porbability);   
+    }
+    fclose(file1);
+
+    // for (int i = 0; i < length; i++){
+    //     printf("%.2f, %.3lf ", s1.data[i].time, s1.data[i].porbability);
+    //     printf("%.2f, %.3lf\n", s2.data[i].time, s2.data[i].porbability);
+    // }
+
+    for (int i = 0; i < length; i++) {
+        if(s1.data[i].porbability > s1.threshold) {
+            s1.object_detection[i] = 1;
+        }
+        if(s2.data[i].porbability > s2.threshold) {
+            s2.object_detection[i] = 1;
+        }
     }
 
-    fclose(file1);
+    // for (int i = 0; i < length; i++) {
+    //     printf("%d ", s1.object_detection[i]);
+    //     printf("%d\n", s2.object_detection[i]);
+    // }
+
+    
 
     return 0;
 }
 
 
 
-//     int a = 0;
-//     int b = 0;
-
-//     while (fscanf(file_1, "%1d %1d", &a, &b) == 2) {
-//         printf("%d, %d\n", a, b);
-
-//     }
