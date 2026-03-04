@@ -8,24 +8,34 @@
 #include <string.h>
 #include "../include/playlist.h"
 
- Playlist *init_playlist() {
+ Playlist * init_playlist() {
     Playlist *P = malloc(sizeof(Playlist));
 
     if (P == NULL) {
             printf("Error with mem by init_playlsist\n");
+            return;
         }
 
     P->Head = NULL;
     P->Tail = NULL;
+    P->lenght = 0;
+
     return P;
 }
 
 void add_song(Playlist *P, char title[], char artist[]) {
+
+    if (MAX_SONGS == P->lenght){
+        printf("Queue max sitze is reached");
+        return;
+    }
+
     Song *el = malloc(sizeof(Song));
 
     if (el == NULL) {
-            printf("Error with mem by add_song\n");
-        }
+        printf("Error with mem by add_song\n");
+        return;
+    }
 
     el->title = strdup(title);
     el->artist = strdup(artist);
@@ -38,6 +48,20 @@ void add_song(Playlist *P, char title[], char artist[]) {
         P->Tail->next = el;
         P->Tail = el;
     }
+    P->lenght = P->lenght + 1;
+}
+
+//Print all elements of the queue
+void printQueue(Playlist * P) {
+    Song * temp = P->Head;     // start from the head
+    printf("Queue:\n");
+    while (temp != NULL) {
+        printf("%d", P->lenght);
+        printf("%.0f", temp->artist);
+        printf("%.0f\n", temp->title);
+
+        temp = temp->next;  // move to the next node
+    }  
 }
 
 void delete_firstsong(Playlist *P) {
@@ -48,6 +72,7 @@ void delete_firstsong(Playlist *P) {
         P->Head = out->next;
         free(out);
     }
+    P->lenght = P->lenght - 1;
 }
 
 void delete_playlist(Playlist *P) {
