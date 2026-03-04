@@ -37,7 +37,7 @@ void add_song(Playlist *P, char title[], char artist[]) {
         return;
     }
 
-    el->title = strdup(title);
+    el->title = strdup(title);  // strdup allocates memory with malloc and copies the string
     el->artist = strdup(artist);
     el->next = NULL;
 
