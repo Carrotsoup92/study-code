@@ -13,20 +13,20 @@
 
     if (P == NULL) {
             printf("Error with mem by init_playlsist\n");
-            return;
+            return NULL;
         }
 
     P->Head = NULL;
     P->Tail = NULL;
-    P->lenght = 0;
+    P->length = 0;
 
     return P;
 }
 
 void add_song(Playlist *P, char title[], char artist[]) {
 
-    if (MAX_SONGS == P->lenght){
-        printf("Queue max sitze is reached");
+    if (MAX_SONGS == P->length){
+        printf("Queue max sitze is reached\n");
         return;
     }
 
@@ -48,31 +48,37 @@ void add_song(Playlist *P, char title[], char artist[]) {
         P->Tail->next = el;
         P->Tail = el;
     }
-    P->lenght = P->lenght + 1;
+    P->length = P->length + 1;
 }
 
 //Print all elements of the queue
-void printQueue(Playlist * P) {
+void printQueue(Playlist *P) {
     Song * temp = P->Head;     // start from the head
     printf("Queue:\n");
     while (temp != NULL) {
-        printf("%d", P->lenght);
-        printf("%.0f", temp->artist);
-        printf("%.0f\n", temp->title);
+        printf("%d ", P->length);
+        printf("%s ", temp->artist);
+        printf("%s\n", temp->title);
 
         temp = temp->next;  // move to the next node
     }  
 }
 
 void delete_firstsong(Playlist *P) {
-    if(P->Head == NULL) {
+    if(P == NULL || P->Head == NULL) {
         printf("List is alrady empty.");
     } else {
         Song *out = P->Head;
         P->Head = out->next;
+        if (P->Head == NULL) {
+            P->Tail = NULL;
+            P->length = 0;
+        }
         free(out);
+        out = NULL;
+        P->length--;
     }
-    P->lenght = P->lenght - 1;
+    
 }
 
 void delete_playlist(Playlist *P) {

@@ -19,14 +19,20 @@ typedef struct Playlist
 {
     Song *Head;
     Song *Tail;
-    int lenght;
+    int length;
 } Playlist;
 
 Playlist * init_playlist() ;
 
 void add_song(Playlist *P, char title[], char artist[]);
 
-void printQueue(Playlist * P);
+void printQueue(Playlist *P);
+
+void delete_firstsong(Playlist *P);
+
+void delete_playlist(Playlist *P);
+
+
 
 
 
