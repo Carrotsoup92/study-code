@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../include/playlist.h"
 
 
@@ -44,6 +45,7 @@ void test_delete_firstSong(void) {
     assert(List != NULL);
 
     add_song(List, "Title A", "Artist A");
+    assert(List->length == 1);
 
     delete_firstsong(List);
 
@@ -54,7 +56,7 @@ void test_delete_firstSong(void) {
     free(List);
 }
 
-test_delete_firstSong_empty() {
+void test_delete_firstSong_empty() {
     Playlist *List = init_playlist();
     assert(List != NULL);
 
@@ -67,7 +69,7 @@ test_delete_firstSong_empty() {
     free(List);
 }
 
-void test_delete_playlist() {
+void test_delete_playlist(void) {
     Playlist *List = init_playlist();
     assert(List != NULL);
 
@@ -81,7 +83,7 @@ void test_delete_playlist() {
     assert(List->length == 0);
 }
 
-test_max_songs_limit() {
+void test_max_songs_limit() {
     Playlist *List = init_playlist();
     assert(List != NULL);
 

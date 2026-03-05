@@ -66,19 +66,18 @@ void printQueue(Playlist *P) {
 
 void delete_firstsong(Playlist *P) {
     if(P == NULL || P->Head == NULL) {
-        printf("List is alrady empty.");
+        printf("List is alrady empty.\n");
     } else {
         Song *out = P->Head;
         P->Head = out->next;
         if (P->Head == NULL) {
             P->Tail = NULL;
-            P->length = 0;
         }
         free(out->artist);
         free(out->title);
         free(out);
         out = NULL;
-        P->length--;
+        P->length = P->length -1;
     }
     
 }
@@ -87,6 +86,6 @@ void delete_playlist(Playlist *P) {
     while (P->Head != NULL) {
         delete_firstsong(P);
     }
-    printf("List is deleted.");
+    printf("List is deleted.\n");
     free(P);  
 }
