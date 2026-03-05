@@ -74,6 +74,8 @@ void delete_firstsong(Playlist *P) {
             P->Tail = NULL;
             P->length = 0;
         }
+        free(out->artist);
+        free(out->title);
         free(out);
         out = NULL;
         P->length--;
