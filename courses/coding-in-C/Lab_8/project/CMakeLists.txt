@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.10)
 
 project(playlist_app C)
@@ -67,3 +68,4 @@ target_link_libraries(playlist_app
 
 # only build main if tests successful
 add_dependencies(playlist_app run_tests)
+
