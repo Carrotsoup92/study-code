@@ -64,3 +64,15 @@ void add_song(Playlist *p_list, char *title, char *artist ) {
         p_list->tail = p_newsong;
     }
 }
+
+void print_song(Playlist *p_list) {
+
+}
+
+void delete_song(Playlist *p_list) {
+
+}
+
+void delete_playlist(Playlist *p_list) {
+
+}
