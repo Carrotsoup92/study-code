@@ -35,7 +35,7 @@ Song* find_song_by_title(Playlist *playlist, const char *title);
 
 
 ## Section II: Counting Songs
-
+_
 ### Requirements
 
 1. Implement a recursive function that counts the number of songs in the playlist.
