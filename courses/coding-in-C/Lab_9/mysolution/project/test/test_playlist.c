@@ -47,12 +47,12 @@ void test_add_song(void)
     assert(p_list->tail != NULL);
     assert(p_list->head != p_list->tail);
 
-    delete_song(&p_list);
+    delete_playlist(&p_list);
 }
 
 
 /**
- * @brief Test the function delete_somg
+ * @brief Test the function delete_song
  */
 void test_delete_song(void)
 {
@@ -61,6 +61,19 @@ void test_delete_song(void)
 
     add_song(p_list, "Title_1", "Artist_1");
 
+    delete_song(p_list);
+    assert(p_list->head == NULL);
+    assert(p_list->tail == NULL);
+
+    add_song(p_list, "Title_1", "Artist_1");
+    add_song(p_list, "Title_2", "Artist_2");
+
+    delete_song(p_list);
+    assert(p_list->head != NULL);
+    assert(p_list->tail != NULL);
+    assert(p_list->head == p_list->tail);
+
+    delete_playlist(&p_list);
 }
 
 
@@ -74,6 +87,17 @@ void test_delete_playlist(void)
 
     delete_playlist(&p_list);
     assert(p_list == NULL);
+
+
+    Playlist *p_list_1 = init_playlist();
+    assert(p_list_1 != NULL);
+
+    add_song(p_list_1, "Title_1", "Artist_1");
+    add_song(p_list_1, "Title_2", "Artist_2");
+    add_song(p_list_1, "Title_3", "Artist_3");
+
+    delete_playlist(&p_list_1);
+    assert(p_list_1 == NULL);
 }
 
 
