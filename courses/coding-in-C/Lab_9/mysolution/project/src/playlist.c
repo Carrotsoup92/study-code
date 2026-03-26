@@ -6,16 +6,14 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
+
  #include "../include/playlist.h"
 
+
 /**
- * @brief short description of the function
+ * @brief Initialize a playlist
  *
- * More detailed description if needed
- *
- * @param[in]  param1 Explain parameter 1 (Input)
- * @param[out] param2 Explain parameter 2 (Output/Pointer)
- * @return            Explanation of return value
+ * @return  Playlist    Pointer to Playlist
  */
 Playlist * init_playlist(void) 
 {
@@ -33,8 +31,22 @@ Playlist * init_playlist(void)
     return p_list;
 }
 
+
+/**
+ * @brief add song to playlist
+ *
+ * @param[in,out]   playlist pointer to playlist
+ * @param[in]       title    title for the song
+ * @param[in]       artist   arrtist of the song
+ */
 void add_song(Playlist *p_list, char *title, char *artist ) 
 {
+    if (p_list == NULL)
+    {
+        printf("Error in add_song!\n");
+        return;
+    }
+
     Song *p_newsong = malloc(sizeof(Song));
 
     if (p_newsong == NULL) 
@@ -48,7 +60,7 @@ void add_song(Playlist *p_list, char *title, char *artist )
 
     if (p_newsong->artist == NULL || p_newsong->title == NULL) 
     {
-        printf("Error by add artist or title");
+        printf("Error by add artist or title!\n");
         free(p_newsong->artist);
         free(p_newsong->title);
         free(p_newsong);
@@ -70,8 +82,20 @@ void add_song(Playlist *p_list, char *title, char *artist )
     }
 }
 
+
+/**
+ * @brief Print the playlist
+ *
+ * @param[in]   playlist pointer to playlist
+ */
 void print_playlist(Playlist *p_list) 
 {
+    if (p_list == NULL)
+    {
+        printf("Error in print_song!\n");
+        return;
+    }
+
     Song *p_temp = p_list->head; 
     printf("Title:      |Artist:");
 
@@ -83,8 +107,20 @@ void print_playlist(Playlist *p_list)
     p_temp = NULL;
 }
 
+
+/**
+ * @brief Delete first song of the playlist
+ *
+ * @param[in,out]   playlist pointer to playlist
+ */
 void delete_song(Playlist *p_list) 
 {
+    if (p_list == NULL)
+    {
+        printf("Error in delete_song!\n");
+        return;
+    }
+
     Song *p_temp = p_list->head;
 
     p_list->head = p_list->head->next;
@@ -98,13 +134,35 @@ void delete_song(Playlist *p_list)
     p_temp = NULL;
 }
 
-void delete_playlist(Playlist *p_list) 
+
+/**
+ * @brief Delete the playlist
+ *
+ * @param[in,out]   playlist pointer to playlist
+ */
+void delete_playlist(Playlist **p_list) 
 {
-    if (p_list->head == NULL)
+    if (*p_list == NULL)
     {
+        printf("Playlist is not initialized!\n");
         return;
     }
-    delete_song(p_list);
-    free(p_list);
-    p_list = NULL;
+
+    if ((*p_list)->head == NULL)
+    {
+        printf("Playlist is already empty!\n");
+
+        free(*p_list);
+        *p_list = NULL;
+        return;
+    }
+
+    while ((*p_list)->head != NULL)
+    {
+        delete_song(*p_list);
+    }
+    
+    free(*p_list);
+    *p_list = NULL;
+    printf("Playlist deleted!\n");
 }
