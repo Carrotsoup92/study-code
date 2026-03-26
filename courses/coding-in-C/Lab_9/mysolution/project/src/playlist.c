@@ -97,12 +97,12 @@ void print_playlist(Playlist *p_list)
     }
 
     Song *p_temp = p_list->head; 
-    printf("Title:      |Artist:");
+    printf("Title:      |Artist:\n");
 
-    while (p_temp->next != NULL) 
+    while (p_temp != NULL) 
     {
-        printf("%c|%c",p_list->head->title, p_list->head->artist);
-        p_temp->next = p_temp->next->next;        
+        printf("%s|%s\n",p_temp->title, p_temp->artist);
+        p_temp = p_temp->next;        
     }
     p_temp = NULL;
 }
