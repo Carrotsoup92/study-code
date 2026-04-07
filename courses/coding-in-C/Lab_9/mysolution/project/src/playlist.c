@@ -101,7 +101,7 @@ void print_playlist(Playlist *p_list)
 
     while (p_temp != NULL) 
     {
-        printf("%s|%s\n",p_temp->title, p_temp->artist);
+        printf("%s     |%s\n",p_temp->title, p_temp->artist);
         p_temp = p_temp->next;        
     }
     p_temp = NULL;
