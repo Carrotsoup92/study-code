@@ -66,6 +66,8 @@ int main()
     {
         std::cout << "That means you are still a kid or teenager.";
     }
+    
+    return 0;
 }
  
 
