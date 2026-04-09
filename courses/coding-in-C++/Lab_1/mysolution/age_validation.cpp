@@ -42,7 +42,8 @@ int main()
             std::cout << "PLease enter a number.\n";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        } else if (age < 0)
+        } 
+        else if (age < 0)
         {
             std::cout << "Please enter a positive number.\n";
             std::cin.clear();
@@ -54,8 +55,17 @@ int main()
         }
     }
     
-
-    std::cout <<age;
+    if (validation::is_senior(static_cast<uint8_t>(age)))
+    {
+        std::cout << "That means that you are a senior.";
+    } 
+    else if (validation::is_adult(static_cast<uint8_t>(age)))
+    {
+        std::cout << "That means that you are an andult.";
+    } else 
+    {
+        std::cout << "That means you are still a kid or teenager.";
+    }
 }
  
 
