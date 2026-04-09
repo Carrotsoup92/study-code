@@ -5,17 +5,26 @@
 
 #include <iostream>
 #include <cstdint>
+#include <limits>
 
 namespace validation
 {
     bool is_adult(uint8_t age)
     {
-        return age >= 18;
+        if (age >= 18)
+        {
+            return true;
+        }
+        return false;
     }
 
     bool is_senior(uint8_t age)
     {
-        return age >=65;
+        if (age >= 65)
+        {
+            return true;
+        }
+        return false;
     }
 }
 
@@ -30,9 +39,18 @@ int main()
         // if not a number or to large for int
         if (!(std::cin >>age))
         {
-            std::cout <<"PLease enter a number.\n";
+            std::cout << "PLease enter a number.\n";
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else if (age < 0)
+        {
+            std::cout << "Please enter a positive number.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else 
+        {
+            std::cout << "You are " << age  << " years old.\n";
+            break;
         }
     }
     
