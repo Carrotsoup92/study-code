@@ -3,13 +3,13 @@
  * Description: main file for Lab_9 
  */
 
- #include <stdio.h>
+#include <stdio.h>
  
- #include "include/playlist.h"
- #include "include/algorithms.h"
+#include "include/playlist.h"
+#include "include/algorithms.h"
 
- int main ()
- {
+int main ()
+{
    Playlist *p_list = init_playlist();
 
    add_song(p_list, "Title_1", "Artist_1");
@@ -30,8 +30,7 @@
       printf("%s\n", p_foundsong->title);
    }
 
-   
-   
-
    delete_playlist(&p_list);
- }
+
+   return 0;
+}

@@ -16,4 +16,12 @@ typedef struct Playlist Playlist;
  */
 Song* find_song_by_title(Playlist *p_list, const char *title);
 
+
+ /**
+ * @brief Counts songs in a playlist
+ *
+ * @return  int  counted songs
+ */
+int count_songs_recursive(const Song *current);
+
 #endif

@@ -2,7 +2,7 @@
 # cmake -G "MinGW Makefiles" ..     # command for local Windows machine
 # cmake ..                          # command for Unix-based GitHub codespaces
 # cmake --build .                   # Build the exe and run all tests
-# ./playlist_app.exe             # run the main exe
+# ./playlist_app.exe                # run the main exe
 
 
 cmake_minimum_required(VERSION 3.10)
