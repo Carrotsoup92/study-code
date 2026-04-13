@@ -9,9 +9,13 @@
 
 namespace validation
 {
+
+    const uint8_t ADULT = 18;
+    const uint8_t SENIOR = 65;
+
     bool is_adult(uint8_t age)
     {
-        if (age >= 18)
+        if (age >= ADULT)
         {
             return true;
         }
@@ -20,7 +24,7 @@ namespace validation
 
     bool is_senior(uint8_t age)
     {
-        if (age >= 65)
+        if (age >= SENIOR)
         {
             return true;
         }
