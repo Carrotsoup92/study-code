@@ -13,6 +13,11 @@ public:
         text = new std::string(str);
     }
 
+    Node(const Node& n)
+    {
+        text = new std::string(*n.text);
+    }
+
     ~Node()
     {
         delete text;
