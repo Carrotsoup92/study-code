@@ -51,13 +51,13 @@ g++ helloWorld.cpp -o helloWorld
 * Feel free to repeat this process on your local machine to ensure a correct setup there too
 * If you struggle with these steps or wonder how to get running on your private, local machine, you can follow the lab1 of the C course which can be found [in this same repo](https://github.com/christian-braunagel/study-code/tree/main/courses/coding-in-C/Lab_1)
 
-## 🟢 Section II: Age Validation
+## 🟢 Section II: Our C++ coding convention
 The goal of this section is to familiarize yourself with the C++ coding convention of this course.
 
 ### Task Description
 * Navigate to the __coding-in-C++__ folder and open the __cpp_coding_conventions.md__
 * Read the convention in detail at least up to point 18.)
-* If you do not understand something, align with colleagues, teachers or AI bots
+* Write down any point that is unclear to you for later discussions
 
 ## 🟢 Section III: Age Validation
 
@@ -114,6 +114,7 @@ Please enter your age:
 ```
 * Ensure that the user input is a number not some random text
 * Ensure that the user input is not negative
+* Ensure that the user input is not unrealistic high
 * Ask the user to re-enter the input if it was not valid
 * Use the portable data type __uint8_t__ in the main function to store entered age.
 
