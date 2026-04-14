@@ -46,3 +46,33 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
         }
     }
 }
+
+void calculateGrade(double& homework, double& midterm, double& finalExam, double& finalGrade, std::string letterGrade)
+{
+    finalGrade = (homework * 0,4) + (midterm * 0,25) + (finalExam * 0,35);
+
+    if (finalGrade >= 90)
+    {
+        letterGrade = 'A';
+    } 
+    else if (finalGrade >= 80)
+    {
+        letterGrade = 'B';
+    } 
+    else if (finalGrade >= 70)
+    {
+        letterGrade = 'C';
+    }
+    else if (finalGrade >= 60)
+    {
+        letterGrade = 'D';
+    }
+    else if (finalGrade >= 50)
+    {
+        letterGrade = 'E';
+    }
+    else 
+    {
+        letterGrade = 'F';
+    }
+}
