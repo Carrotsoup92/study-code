@@ -48,7 +48,7 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
     }
 }
 
-void calculateGrade(double& homework, double& midterm, double& finalExam, double& finalGrade, std::string letterGrade)
+void calculateGrade(double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
 {
     finalGrade = (homework * 0,4) + (midterm * 0,25) + (finalExam * 0,35);
 
@@ -78,7 +78,18 @@ void calculateGrade(double& homework, double& midterm, double& finalExam, double
     }
 }
 
-void printReport(std::string name, double homework, double midterm, double finalExam, double finalGrade, std::string letterGrade)
+
+const void print_grade(std::string subject, double grade)
+{
+        std::cout <<std::left << std::setw(15) << subject << ": " << std::setprecision(4) << grade << "\n";
+}
+
+const void dash_line()
+{
+    std::cout <<std::setfill('-') <<std::setw(20) << "" "\n";
+}
+
+void printReport(std::string& name, double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
 {
     std::string status;
     
@@ -95,7 +106,6 @@ void printReport(std::string name, double homework, double midterm, double final
         status = "FAIL";
     }
 
-    
     dash_line();
     std::cout << "Student Report\n";
     dash_line();
@@ -103,16 +113,15 @@ void printReport(std::string name, double homework, double midterm, double final
 
     std::cout << "Scores";
     dash_line();
-    std::cout <<std::left << std::setw(15) << "Homework" << ": " << std::setprecision(4) << homework;
-    std::cout <<std::left << std::setw(15) << "Homework" << ": " << std::setprecision(4) << homework;
+    print_grade("Homework", homework);
+    print_grade("Midterm", midterm);
+    print_grade("Final Exam", finalExam);
+    std::cout << "\n";
 
-
-
-
+    print_grade("Final Grade", finalGrade);
+    std::cout <<std::left <<std::setw(15) << "Letter Grade" << ": " << letterGrade << "\n";
+    std::cout <<std::left <<std::setw(15) << "Status" << ": " << status << "\n";
+    dash_line();
 }
 
-const void dash_line()
-{
-    std::cout <<std::setfill('-') <<std::setw(20) << "" "\n";
 
-}
