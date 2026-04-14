@@ -50,7 +50,7 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
 
 void calculateGrade(double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
 {
-    finalGrade = (homework * 0,4) + (midterm * 0,25) + (finalExam * 0,35);
+    finalGrade = (homework * 0.4) + (midterm * 0.25) + (finalExam * 0.35);
 
     if (finalGrade >= 90)
     {
@@ -78,15 +78,15 @@ void calculateGrade(double& homework, double& midterm, double& finalExam, double
     }
 }
 
-
 const void print_grade(std::string subject, double grade)
 {
-        std::cout <<std::left << std::setw(15) << subject << ": " << std::setprecision(4) << grade << "\n";
+        std::cout <<std::left << std::setw(20) << subject << ": " << std::setprecision(4) << grade << "\n";
 }
 
 const void dash_line()
 {
-    std::cout <<std::setfill('-') <<std::setw(20) << "" "\n";
+    std::cout <<std::setfill('-') <<std::setw(40) << "" "\n";
+    std::cout <<std::setfill(' ');
 }
 
 void printReport(std::string& name, double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
@@ -111,7 +111,7 @@ void printReport(std::string& name, double& homework, double& midterm, double& f
     dash_line();
     std::cout << "Name: " << name << "\n\n";
 
-    std::cout << "Scores";
+    std::cout << "Scores\n";
     dash_line();
     print_grade("Homework", homework);
     print_grade("Midterm", midterm);
@@ -119,8 +119,10 @@ void printReport(std::string& name, double& homework, double& midterm, double& f
     std::cout << "\n";
 
     print_grade("Final Grade", finalGrade);
-    std::cout <<std::left <<std::setw(15) << "Letter Grade" << ": " << letterGrade << "\n";
-    std::cout <<std::left <<std::setw(15) << "Status" << ": " << status << "\n";
+    std::cout <<std::left <<std::setw(20) << "Letter Grade" << ": " << letterGrade << "\n";
+    std::cout <<std::left <<std::setw(20) << "Status" << ": " << status << "\n";
+    // dash_line();
+    std::cout << "huhu\n";
     dash_line();
 }
 
