@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstdint>
 #include <limits>
+#include <iomanip>
 
 #include "input_data.hpp"
 
@@ -75,4 +76,43 @@ void calculateGrade(double& homework, double& midterm, double& finalExam, double
     {
         letterGrade = 'F';
     }
+}
+
+void printReport(std::string name, double homework, double midterm, double finalExam, double finalGrade, std::string letterGrade)
+{
+    std::string status;
+    
+    if (letterGrade == "A" || letterGrade == "B" || letterGrade == "C")
+    {
+        status = "PASS";
+    }
+    else if ( letterGrade == "D" || letterGrade == "E")
+    {
+        status = "CONDTIONAL PASS";
+    }
+    else 
+    {
+        status = "FAIL";
+    }
+
+    
+    dash_line();
+    std::cout << "Student Report\n";
+    dash_line();
+    std::cout << "Name: " << name << "\n\n";
+
+    std::cout << "Scores";
+    dash_line();
+    std::cout <<std::left << std::setw(15) << "Homework" << ": " << std::setprecision(4) << homework;
+    std::cout <<std::left << std::setw(15) << "Homework" << ": " << std::setprecision(4) << homework;
+
+
+
+
+}
+
+const void dash_line()
+{
+    std::cout <<std::setfill('-') <<std::setw(20) << "" "\n";
+
 }
