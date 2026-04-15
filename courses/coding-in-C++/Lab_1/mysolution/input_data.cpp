@@ -29,6 +29,10 @@ void read_student_data(std::string& name, double& homework,
     }
 
     std::cout << "Please enter homework, midterm and final exam grades: ";
+
+    const double MAX_GRADE = 100;
+    const double MIN_GRADE = 0;
+
     while (true)
     {
         if (!(std::cin >>homework >>midterm >>finalExam))
@@ -37,9 +41,9 @@ void read_student_data(std::string& name, double& homework,
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-        else if (homework <0|| homework >100 || 
-                midterm <0 || midterm >100 || 
-                finalExam <0 || finalExam >100)
+        else if (homework < MIN_GRADE || homework > MAX_GRADE || 
+                midterm < MIN_GRADE || midterm > MAX_GRADE || 
+                finalExam < MIN_GRADE || finalExam > MAX_GRADE)
         {
             std::cout << "Please enter a valid number\n";
             std::cin.clear();
