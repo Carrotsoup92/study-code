@@ -11,7 +11,8 @@
 #include "input_data.hpp"
 
 
-void read_student_data(std::string& name, double& homework, double& midterm, double& finalExam)
+void read_student_data(std::string& name, double& homework, 
+                        double& midterm, double& finalExam)
 {
     std::cout << "Please enter student name: "; 
     while (true)
@@ -27,7 +28,7 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
         }
     }
 
-    std::cout << "Please enter homework, midterm and final exam grads: ";
+    std::cout << "Please enter homework, midterm and final exam grades: ";
     while (true)
     {
         if (!(std::cin >>homework >>midterm >>finalExam))
@@ -36,7 +37,9 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-        else if (homework <0|| homework >100 || midterm <0 || midterm >100 || finalExam <0 || finalExam >100)
+        else if (homework <0|| homework >100 || 
+                midterm <0 || midterm >100 || 
+                finalExam <0 || finalExam >100)
         {
             std::cout << "Please enter a valid number\n";
             std::cin.clear();
@@ -48,48 +51,51 @@ void read_student_data(std::string& name, double& homework, double& midterm, dou
     }
 }
 
-void calculateGrade(double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
+void calculateGrade(const double& homework, const double& midterm, const double& finalExam, 
+                    double& finalGrade, std::string& letterGrade)
 {
     finalGrade = (homework * 0.4) + (midterm * 0.25) + (finalExam * 0.35);
 
     if (finalGrade >= 90)
     {
-        letterGrade = 'A';
+        letterGrade = "A";
     } 
     else if (finalGrade >= 80)
     {
-        letterGrade = 'B';
+        letterGrade = "B";
     } 
     else if (finalGrade >= 70)
     {
-        letterGrade = 'C';
+        letterGrade = "C";
     }
     else if (finalGrade >= 60)
     {
-        letterGrade = 'D';
+        letterGrade = "D";
     }
     else if (finalGrade >= 50)
     {
-        letterGrade = 'E';
+        letterGrade = "E";
     }
     else 
     {
-        letterGrade = 'F';
+        letterGrade = "F";
     }
 }
 
-const void print_grade(std::string subject, double grade)
+const void print_grade(const std::string& subject, const double& grade)
 {
-        std::cout <<std::left << std::setw(20) << subject << ": " << std::setprecision(4) << grade << "\n";
+        std::cout <<std::left << std::setw(20) << subject << ": " << std::setprecision(2) << grade << "\n";
 }
 
 const void dash_line()
 {
-    std::cout <<std::setfill('-') <<std::setw(40) << "" "\n";
+    std::cout <<std::setfill('-') <<std::setw(40) << "" << "\n";
     std::cout <<std::setfill(' ');
 }
 
-void printReport(std::string& name, double& homework, double& midterm, double& finalExam, double& finalGrade, std::string& letterGrade)
+void printReport(const std::string& name, const double& homework, 
+                const double& midterm, const double& finalExam,
+                const double& finalGrade, const std::string& letterGrade)
 {
     std::string status;
     
@@ -99,7 +105,7 @@ void printReport(std::string& name, double& homework, double& midterm, double& f
     }
     else if ( letterGrade == "D" || letterGrade == "E")
     {
-        status = "CONDTIONAL PASS";
+        status = "CONDITIONAL PASS";
     }
     else 
     {
@@ -121,8 +127,6 @@ void printReport(std::string& name, double& homework, double& midterm, double& f
     print_grade("Final Grade", finalGrade);
     std::cout <<std::left <<std::setw(20) << "Letter Grade" << ": " << letterGrade << "\n";
     std::cout <<std::left <<std::setw(20) << "Status" << ": " << status << "\n";
-    // dash_line();
-    std::cout << "huhu\n";
     dash_line();
 }
 
