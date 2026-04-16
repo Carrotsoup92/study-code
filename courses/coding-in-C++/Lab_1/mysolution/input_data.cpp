@@ -3,6 +3,10 @@
  * Description: validate user input
  */
 
+#ifndef INPUT_DATAT_CPP
+#define INPUT_DATAT_CPP
+
+
 #include <iostream>
 #include <cstdint>
 #include <limits>
@@ -10,7 +14,14 @@
 
 #include "input_data.hpp"
 
-
+/**
+ * @brief reads and validates the input of the students data
+ * 
+ * @param[in,out]   name        string to store the students name
+ * @param[in,out]   homework    double to store the homework grade
+ * @param[in,out]   midterm     double to store the midterm grade
+ * @param[in,out]   finalExam    double to store the final exam grade
+ */
 void read_student_data(std::string& name, double& homework, 
                         double& midterm, double& finalExam)
 {
@@ -55,6 +66,16 @@ void read_student_data(std::string& name, double& homework,
     }
 }
 
+
+/**
+ * @brief Calculates the final grade of the stdent and set the letter grade
+ * 
+ * @param[in]       homework     double of homework grade
+ * @param[in]       midterm      double of midterm grade
+ * @param[in]       finalExam    double of final exam grade
+ * @param[in,out]   finalGrade   double of final grade
+ * @param[in,out]   letterGrade  string of letter grade
+ */
 void calculateGrade(const double& homework, const double& midterm, const double& finalExam, 
                     double& finalGrade, std::string& letterGrade)
 {
@@ -97,6 +118,17 @@ const void dash_line()
     std::cout <<std::setfill(' ');
 }
 
+
+/**
+ * @brief Prints the student report
+ * 
+ * @param[in]       name         string of the name
+ * @param[in]       homework     double of homework grade
+ * @param[in]       midterm      double of midterm grade
+ * @param[in]       finalExam    double of final exam grade
+ * @param[in]       finalGrade   double of final grade
+ * @param[in]       letterGrade  string of letter grade
+ */
 void printReport(const std::string& name, const double& homework, 
                 const double& midterm, const double& finalExam,
                 const double& finalGrade, const std::string& letterGrade)
@@ -134,4 +166,4 @@ void printReport(const std::string& name, const double& homework,
     dash_line();
 }
 
-
+#endif
