@@ -5,34 +5,30 @@
 
 // Fehler 4: header file benutzen
 
-// Fehler 1: kein using benutzen
-using namespace std;
-
 class Article {
-public:
-
-// Fehler 2: Atribute Ptivate setzen
-    string name;
+private:
+    std::string name;
     double price;
     int stock;
-// Fehler 5: Pointer brauchnt man nicht
-    string* category;
+    std::string category;
     int id;
 
+public:
     // Fehler 6: Deconstrunctor fehlt
     // Fehler 7: als liste initialisieren
-    Article(string name, double price, int stock, string category, int id) {
-        name = name;
-        price = price;
-        stock = stock;
-        this->id = id;
-        this->category = new string;
-        *this->category = category;
+    Article(std::string name, double price, int stock, std::string category, int id): 
+            name(name), price(price), stock(stock), category(category), id(id)
+    {
     }
 
     // Fehler 3: This pointer verwenden
-    void setPrice(double price) {
-        price = price;
+    void setPrice(double price) 
+    {
+        if (price < 0.0)
+        {
+            
+        }
+        this->price = price;
     }
 
 //Fehler 8: validieren mehr verkaufen als in lager ist
