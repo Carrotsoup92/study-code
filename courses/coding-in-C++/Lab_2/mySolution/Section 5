@@ -1,0 +1,81 @@
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+// Fehler 4: header file benutzen
+
+class Article {
+private:
+    std::string name;
+    double price;
+    int stock;
+    std::string category;
+    int id;
+
+public:
+    // Fehler 6: Deconstrunctor fehlt
+    // Fehler 7: als liste initialisieren
+    Article(std::string name, double price, int stock, std::string category, int id): 
+            name(name), price(price), stock(stock), category(category), id(id)
+    {
+    }
+
+    // Fehler 3: This pointer verwenden
+    void setPrice(double price) 
+    {
+        if (price < 0.0)
+        {
+            
+        }
+        this->price = price;
+    }
+
+//Fehler 8: validieren mehr verkaufen als in lager ist
+    void sell(int amount) {
+        stock = stock - amount;
+    }
+
+    void restock(int amount) {
+        this->stock += amount;
+    }
+
+    double applyDiscount(double percent) {
+        price = price - price * percent / 100;
+        return price;
+    }
+
+// Fehler 9: Fnunktion sollte const sein
+    double getPrice() {
+        return price;
+    }
+
+    bool isAvailable() {
+        if (stock > 0)
+            return true;
+        else
+            return false;
+    }
+
+    void printInfo() {
+        cout << "Article: " << name << endl;
+        cout << "Category: " << *category << endl;
+        cout << "Price: " << price << endl;
+        cout << "Stock: " << stock << endl;
+        cout << "ID: " << id << endl;
+    }
+};
+
+int main() {
+// Fehler 10: a ist kein suberer name
+    Article a("Laptop", 999.99, 10, "Electronics", 101);
+
+    a.sell(15);
+    a.restock(-5);
+    a.price = -100;
+    a.applyDiscount(150);
+
+    if (a.isAvailable()) cout << "Article available" << endl;
+
+    a.printInfo();
+}
