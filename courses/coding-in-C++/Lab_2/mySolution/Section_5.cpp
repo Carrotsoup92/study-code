@@ -15,29 +15,42 @@ private:
 
 public:
     // Fehler 6: Deconstrunctor fehlt
-    // Fehler 7: als liste initialisieren
     Article(std::string name, double price, int stock, std::string category, int id): 
             name(name), price(price), stock(stock), category(category), id(id)
     {
     }
 
-    // Fehler 3: This pointer verwenden
     void setPrice(double price) 
     {
+        const double MIN_PRICE = 0.0;
+
         if (price < 0.0)
         {
-            
+            this->price = MIN_PRICE;
+            std::cout << "Error by setSprice!\n";
         }
-        this->price = price;
+        else
+        {
+            this->price = price;
+        }
     }
 
-//Fehler 8: validieren mehr verkaufen als in lager ist
-    void sell(int amount) {
-        stock = stock - amount;
+    void sell(int amount) 
+    {
+        if (stock < amount)
+        {
+            std::cout << "Error by sell!\n";
+        }
+        else
+        {
+            stock = stock - amount;
+
+        }
     }
 
-    void restock(int amount) {
-        this->stock += amount;
+    void restock(int amount) 
+    {
+        stock += amount;
     }
 
     double applyDiscount(double percent) {
@@ -45,21 +58,25 @@ public:
         return price;
     }
 
-// Fehler 9: Fnunktion sollte const sein
-    double getPrice() {
+    double getPrice() 
+    {
         return price;
     }
 
-    bool isAvailable() {
+    bool isAvailable() 
+    {
         if (stock > 0)
             return true;
         else
             return false;
     }
 
-    void printInfo() {
+    const void printInfo() 
+    {    
+        using namespace std;
+
         cout << "Article: " << name << endl;
-        cout << "Category: " << *category << endl;
+        cout << "Category: " << category << endl;
         cout << "Price: " << price << endl;
         cout << "Stock: " << stock << endl;
         cout << "ID: " << id << endl;
@@ -67,15 +84,18 @@ public:
 };
 
 int main() {
-// Fehler 10: a ist kein suberer name
-    Article a("Laptop", 999.99, 10, "Electronics", 101);
+    Article laptop("Laptop", 999.99, 10, "Electronics", 101);
 
-    a.sell(15);
-    a.restock(-5);
-    a.price = -100;
-    a.applyDiscount(150);
+    laptop.sell(4);
+    laptop.restock(10);
+    laptop.getPrice();
+    laptop.applyDiscount(10);
+    laptop.setPrice(615.65);
 
-    if (a.isAvailable()) cout << "Article available" << endl;
+    if (laptop.isAvailable()) 
+    {
+        std::cout << "Article available" << std::endl;
+    }
 
-    a.printInfo();
+    laptop.printInfo();
 }
