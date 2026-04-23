@@ -3,10 +3,6 @@
  * Description: validate user input
  */
 
-#ifndef INPUT_DATAT_CPP
-#define INPUT_DATAT_CPP
-
-
 #include <iostream>
 #include <cstdint>
 #include <limits>
@@ -107,12 +103,12 @@ void calculateGrade(const double& homework, const double& midterm, const double&
     }
 }
 
-const void print_grade(const std::string& subject, const double& grade)
+static void print_grade(const std::string& subject, const double& grade)
 {
         std::cout <<std::left << std::setw(20) << subject << ": " << std::setprecision(2) << grade << "\n";
 }
 
-const void dash_line()
+static void dash_line()
 {
     std::cout <<std::setfill('-') <<std::setw(40) << "" << "\n";
     std::cout <<std::setfill(' ');
