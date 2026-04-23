@@ -11,22 +11,23 @@ private:
     std::string name;
     int sugar;
     int temperature;
-    bool with_minlk;
+    bool with_milk;
     const int MAX_SUGAR;
     const int MIN_SUGAR;
     const int MAX_TEMPERATURE;
     const int MIN_TEMPERATURE;
 public:
     DrinkBuilder(int MAX_SUGAR): 
-                MAX_SUGAR(MAX_SUGAR), MIN_SUGAR(MIN_SUGAR), 
-                MAX_TEMPERATURE(MAX_TEMPERATURE), MIN_TEMPERATURE(MIN_TEMPERATURE)
+                name(" "), sugar(0), temperature(1), with_milk(false),
+                MAX_SUGAR(MAX_SUGAR), MIN_SUGAR(0), MAX_TEMPERATURE(100), MIN_TEMPERATURE(1)
     ~DrinkBuilder();
 
     DrinkBuilder& set_name(const std::string& name);
     DrinkBuilder& set_sugar(int sugar);
     DrinkBuilder& set_temperature(int temperature);
     DrinkBuilder& set_with_milk(bool with_milk);
-    void print();
+    DrinkBuilder& valid();
+    void print() const;
 };
 
 /**
@@ -87,7 +88,6 @@ DrinkBuilder& DrinkBuilder::set_temperature(int temperature)
     return *this;
 }
 
-
 /**
  * @brief Set the milk of the drink.
  *
@@ -96,16 +96,31 @@ DrinkBuilder& DrinkBuilder::set_temperature(int temperature)
  */
 DrinkBuilder& DrinkBuilder::set_with_milk(bool with_milk)
 {
-    this->with_minlk = with_milk;
+    this->with_milk = with_milk;
     return *this;
 }
 
+DrinkBuilder& DrinkBuilder::valid() 
+{
+    return *this;
+}
+
+void DrinkBuilder::print() const
+{
+    
+}
 
 
 int main() {
     
-    DrinkBuilder& Drink(5, 0, 100, 1);
+    DrinkBuilder drink(5);
 
-
+    drink.set_name("Tea")
+         .set_sugar(3)
+         .set_temperature(80)
+         .set_with_milk(false)
+         .valid()
+         .print();
+         
     return 0;
 }
