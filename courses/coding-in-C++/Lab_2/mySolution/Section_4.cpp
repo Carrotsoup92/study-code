@@ -4,6 +4,7 @@
 */
 
 #include <iostream>
+#include <string>
 
 class DrinkBuilder
 {
@@ -13,20 +14,22 @@ private:
     int temperature;
     bool with_milk;
     const int MAX_SUGAR;
-    const int MIN_SUGAR;
-    const int MAX_TEMPERATURE;
-    const int MIN_TEMPERATURE;
+    static constexpr int MIN_SUGAR = 0;
+    static constexpr int MAX_TEMPERATURE = 80;
+    static constexpr int MIN_TEMPERATURE = 1;
+    static constexpr int DEFAULT_TEMPERATURE = 25;
 public:
     DrinkBuilder(int MAX_SUGAR): 
-                name(" "), sugar(0), temperature(1), with_milk(false),
-                MAX_SUGAR(MAX_SUGAR), MIN_SUGAR(0), MAX_TEMPERATURE(100), MIN_TEMPERATURE(1)
-    ~DrinkBuilder();
+                name(""), sugar(0), temperature(1), with_milk(false),
+                MAX_SUGAR(MAX_SUGAR)
+                {};
+    ~DrinkBuilder() = default;
 
     DrinkBuilder& set_name(const std::string& name);
     DrinkBuilder& set_sugar(int sugar);
     DrinkBuilder& set_temperature(int temperature);
     DrinkBuilder& set_with_milk(bool with_milk);
-    DrinkBuilder& valid();
+    const DrinkBuilder& valid() const;
     void print() const;
 };
 
@@ -75,11 +78,11 @@ DrinkBuilder& DrinkBuilder::set_temperature(int temperature)
 {
     if (temperature < MIN_TEMPERATURE)
     {
-        this->temperature = MIN_TEMPERATURE;
+        this->temperature = DEFAULT_TEMPERATURE;
     }
     else if (temperature > MAX_TEMPERATURE)
     {
-        this->temperature = MAX_TEMPERATURE;
+        this->temperature = DEFAULT_TEMPERATURE;
     }
     else
     {
@@ -100,14 +103,20 @@ DrinkBuilder& DrinkBuilder::set_with_milk(bool with_milk)
     return *this;
 }
 
-DrinkBuilder& DrinkBuilder::valid() 
+const DrinkBuilder& DrinkBuilder::valid(void) const
 {
     return *this;
 }
 
-void DrinkBuilder::print() const
+void DrinkBuilder::print(void) const
 {
-    
+    using namespace std;
+
+    cout << "Your dring configuration.\n";
+    cout << "Drink: " << name << "\n";
+    cout << "Sugar: " << sugar << "\n";
+    cout << "Temperature: " << temperature << "\n";
+    cout << "With milk: " << boolalpha << with_milk << "\n";
 }
 
 
