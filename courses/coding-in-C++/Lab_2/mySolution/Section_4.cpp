@@ -15,7 +15,7 @@ private:
     bool with_milk;
     const int MAX_SUGAR;
     static constexpr int MIN_SUGAR = 0;
-    static constexpr int MAX_TEMPERATURE = 80;
+    static constexpr int MAX_TEMPERATURE = 100;
     static constexpr int MIN_TEMPERATURE = 1;
     static constexpr int DEFAULT_TEMPERATURE = 25;
 public:
