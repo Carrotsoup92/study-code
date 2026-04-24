@@ -12,10 +12,10 @@
         "#include <iostream>",
         "",
         "/**",
-        "* @brief Calculates the average temperature.",
-        "*",
-        "* Returns the arithmetic mean of all valid sensor values.",
-        "* Invalid sensor values are ignored.",
+        " * @brief Calculates the average temperature.",
+        " *",
+        " * Returns the arithmetic mean of all valid sensor values.",
+        " * Invalid sensor values are ignored.",
         " *",
         " * @param[in] values       Array of sensor values",
         " * @param[in,out] value_count  Number of elements in values",
@@ -35,7 +35,7 @@
     "body": 
     [
         "/*",
-        "* File: ${1:FILE}.cpp",
+        "* File: ${1:FILE}.hpp",
         "* Description: Shot discription of the file.",
         "*/",
         "",
