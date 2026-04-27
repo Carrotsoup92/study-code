@@ -1,4 +1,4 @@
-# Lab 3: Relations between Classes
+P# Lab 3: Relations between Classes
 
 This lab introduces fundamental concepts of object-oriented programming in C++, with a focus on modeling and implementing relationships between classes.
 
