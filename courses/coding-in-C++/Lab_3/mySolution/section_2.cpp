@@ -26,7 +26,9 @@ private:
     std::string course;
 public:
     Student(std::string name, int id, std::string course): User(name, id), course(course)
-    {};
+    {
+        std::cout << "Construct of Sudent.\n";
+    }
 
     void print_role()
     {
@@ -41,7 +43,9 @@ private:
     std::string position;
 public:
     Instructor(std::string name, int id, std::string position): User(name, id), position(position)
-    {};
+    {
+        std::cout << "Construct of Instructor.\n";
+    }
 
     void print_role()
     {
@@ -51,13 +55,15 @@ public:
 
 int main()
 {
+    User user("Ich", 000);
+    user.print_info();
+
     Student student("Müller", 001, "Programming");
     Instructor instructor("Schmid", 002, "Chief");
 
-    Student::print_info;
-    Student::print_role;
+    student.print_info();
+    student.print_role();
 
-    Instructor::print_info;
-    Instructor::print_role;
-
+    instructor.print_info();
+    instructor.print_role();
 }
