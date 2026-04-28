@@ -7,17 +7,19 @@
 #define SYSTEM_H
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 class System {
 private:
-   int total_queries;
+   static int total_queries;
 public:
-    System():total_queries(0) // Constructor
-    {}
+    System(); // Constructor
     ~System() = default; // Destructor
 
     void add_query(void);
     void print_statistics(void) const;
+    void print_web_pages(std::vector<WebPage>) const;
 };
 
 #endif

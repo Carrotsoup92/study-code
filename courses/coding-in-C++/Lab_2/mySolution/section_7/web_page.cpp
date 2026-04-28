@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "web_page.hpp"
 
@@ -40,3 +41,18 @@ int WebPage::get_ranking(void) const
 {
     return ranking;
 }
+
+WebPage WebPage::crate_web_page(std::string name, std::string content, int ranking)
+{
+    count_web_pages += 1;
+
+    WebPage page;
+
+    page.set_name(name)
+        .set_content(content)
+        .set_ranking(ranking);
+
+    return page;
+}
+
+
