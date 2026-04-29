@@ -7,13 +7,22 @@
 #define QUERY_H
 
 #include <iostream>
+#include <string>
+#include <vector>
+
+#include "web_page.hpp"
 
 class Query {
 private:
-   int placeholder;
+   int count_results;
+
 public:
     Query();  // Constructor
     ~Query(); // Destructor
+
+    std::vector<WebPage> find_match(std::vector<WebPage>& pages);
+    void sort_results(std::vector<WebPage>& results);
+    void print_results(std::vector<WebPage>& results) const;
 };
 
 #endif
