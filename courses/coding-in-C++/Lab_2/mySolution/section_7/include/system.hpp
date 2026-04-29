@@ -15,13 +15,14 @@
 class System {
 private:
    static int total_queries;
+   
 public:
-    System(); // Constructor
+    System() = default; // Constructor
     ~System() = default; // Destructor
 
     void add_query(void);
     void print_statistics(void) const;
-    void print_web_pages(std::vector<WebPage> pages) const;
+    void print_web_pages(std::vector<WebPage>& pages) const;
 };
 
 #endif

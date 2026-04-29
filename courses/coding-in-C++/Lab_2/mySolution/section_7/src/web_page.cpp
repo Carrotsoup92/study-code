@@ -9,6 +9,8 @@
 
 #include "web_page.hpp"
 
+int WebPage::count_web_pages = 0;
+
 /**
 * @brief Calculates the average temperature.
 *
@@ -52,10 +54,13 @@ std::string WebPage::get_content() const
     return content;
 }
 
-WebPage WebPage::crate_web_page(std::string name, std::string content, int ranking)
+int WebPage::get_count_web_pages()
 {
-    count_web_pages += 1;
+    return count_web_pages;
+}
 
+WebPage WebPage::create_web_page(std::string name, std::string content, int ranking)
+{
     WebPage page;
 
     page.set_name(name)

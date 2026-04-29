@@ -15,26 +15,38 @@ std::vector<WebPage> create_content()
 {
     std::vector<WebPage> pages {};
 
-    WebPage page1;
-    page1.crate_web_page("Apples", "Apples grow on a tree", 3);
+    WebPage page1 = WebPage::create_web_page("Apples", "Apples grow on a tree.", 3);
     pages.push_back(page1);
 
-    WebPage page2;
-    page2.crate_web_page("Apples", "Apples are good", 1);
+
+    WebPage page2 = WebPage::create_web_page("Apples", "Apples are good.", 1);
     pages.push_back(page2);
+
+
+    WebPage page3 = WebPage::create_web_page("Trees", "Many trees are a forest.", 1);
+    pages.push_back(page3);
+
+
+    WebPage page4 = WebPage::create_web_page("People", "People like apple.", 2);
+    pages.push_back(page4);
+
+
+    WebPage page5 = WebPage::create_web_page("Space", "Poeple want live at mars.", 3);
+    pages.push_back(page5);
 
     return pages;
 }
 
-int main() {
-    
+int main() 
+{
     std::vector<WebPage> pages = create_content();
 
     System system;
 
-    system.print_web_pages(pages);
+    system.print_statistics();
+    // system.print_web_pages(pages);
 
     
-         
+     
     return 0;
 }

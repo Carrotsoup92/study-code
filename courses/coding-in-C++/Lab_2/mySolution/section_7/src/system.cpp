@@ -6,6 +6,9 @@
 #include <iostream>
 
 #include "system.hpp"
+#include "web_page.hpp"
+
+int System::total_queries = 0;
 
 /**
  * @brief Calculates the average temperature.
@@ -24,14 +27,15 @@ void System::add_query(void)
 
 void System::print_statistics(void) const
 {
+    std::cout << WebPage::get_count_web_pages() << "\n";
     std::cout << total_queries << "\n";
 }
 
-void System::print_web_pages(std::vector<WebPage> pages) const
+void System::print_web_pages(std::vector<WebPage>& pages) const
 {
     if (pages.empty() == 1)
     {
-        break;
+        return;
     }
 
     int size = pages.size();
@@ -46,6 +50,5 @@ void System::print_web_pages(std::vector<WebPage> pages) const
         std::cout << page.get_name() << "\n";
         std::cout << page.get_content() << "\n";
         std::cout << page.get_ranking() << "\n";
-
     }
 }
