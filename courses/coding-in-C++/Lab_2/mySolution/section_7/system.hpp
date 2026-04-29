@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 
+#include "web_page.hpp"
+
 class System {
 private:
    static int total_queries;
@@ -19,7 +21,7 @@ public:
 
     void add_query(void);
     void print_statistics(void) const;
-    void print_web_pages(std::vector<WebPage>) const;
+    void print_web_pages(std::vector<WebPage> pages) const;
 };
 
 #endif

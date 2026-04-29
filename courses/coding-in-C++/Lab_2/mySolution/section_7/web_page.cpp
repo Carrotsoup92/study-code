@@ -42,6 +42,16 @@ int WebPage::get_ranking(void) const
     return ranking;
 }
 
+std::string WebPage::get_name() const
+{
+    return name;
+}
+
+std::string WebPage::get_content() const
+{
+    return content;
+}
+
 WebPage WebPage::crate_web_page(std::string name, std::string content, int ranking)
 {
     count_web_pages += 1;

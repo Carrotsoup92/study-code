@@ -26,3 +26,26 @@ void System::print_statistics(void) const
 {
     std::cout << total_queries << "\n";
 }
+
+void System::print_web_pages(std::vector<WebPage> pages) const
+{
+    if (pages.empty() == 1)
+    {
+        break;
+    }
+
+    int size = pages.size();
+
+    std::cout << "All pages\n";
+
+    for (int index = 0; index < size; index++)
+    {
+        WebPage page = pages.at(index);
+
+        std::cout << "Page: " << index + 1 << "\n";
+        std::cout << page.get_name() << "\n";
+        std::cout << page.get_content() << "\n";
+        std::cout << page.get_ranking() << "\n";
+
+    }
+}

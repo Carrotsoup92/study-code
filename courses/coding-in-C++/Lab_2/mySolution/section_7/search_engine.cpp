@@ -30,7 +30,9 @@ int main() {
     
     std::vector<WebPage> pages = create_content();
 
-    WebPage::print_web_pages(pages);
+    System system;
+
+    system.print_web_pages(pages);
 
     
          

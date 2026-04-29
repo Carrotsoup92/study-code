@@ -23,6 +23,8 @@ public:
     WebPage& set_name(std::string name);
     WebPage& set_content(std::string content);
     WebPage& set_ranking(int ranking);
+    std::string get_name() const;
+    std::string get_content() const;
     int get_ranking() const;
     WebPage crate_web_page(std::string name, std::string content, int ranking);
 };
