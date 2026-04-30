@@ -17,8 +17,9 @@ private:
    int count_results;
 
 public:
-    Query();  // Constructor
-    ~Query(); // Destructor
+    Query(): count_results(0)
+    {};  // Constructor
+    ~Query() = default; // Destructor
 
     std::vector<WebPage> find_match(const std::vector<WebPage>& pages, const std::string& query);
     void sort_results(std::vector<WebPage>& results);

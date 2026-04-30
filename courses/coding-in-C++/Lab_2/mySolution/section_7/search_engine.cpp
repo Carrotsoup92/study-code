@@ -9,13 +9,14 @@
 
 #include "web_page.hpp"
 #include "system.hpp"
+#include "query.hpp"
 
 
 std::vector<WebPage> create_content()
 {
     std::vector<WebPage> pages {};
 
-    WebPage page1 = WebPage::create_web_page("Apples", "Apples grow on a tree.", 3);
+    WebPage page1 = WebPage::create_web_page("Apples", "Apples grows on a trees.", 3);
     pages.push_back(page1);
 
 
@@ -42,10 +43,15 @@ int main()
     std::vector<WebPage> pages = create_content();
 
     System system;
+    Query query;
 
     system.print_statistics();
     // system.print_web_pages(pages);
 
+    std::vector<WebPage> results = query.find_match(pages, "apple");
+
+    query.sort_results(results);
+    query.print_results(results);
     
      
     return 0;

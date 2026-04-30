@@ -71,10 +71,29 @@ std::vector<WebPage> Query::find_match(const std::vector<WebPage>& pages, const 
 
 void Query::sort_results(std::vector<WebPage>& results)
 {
+    // Sort the results vector
+    // - results.begin() → iterator to the first element
+    // - results.end()   → iterator to one past the last element
+    // - the lambda defines the comparison rule
+    std::sort(results.begin(), results.end(),
+        [](const WebPage& a, const WebPage& b)
+        {
+            // This comparison function determines the order
+            // It returns true if 'a' should come BEFORE 'b'
 
+            // Here: sort by ranking in descending order
+            // (higher ranking = better → comes first)
+            return a.get_ranking() > b.get_ranking();
+        });
 }
 
 void Query::print_results(std::vector<WebPage>& results) const
 {
+    std::cout << "All results:\n";
 
+    for (const WebPage& temp : results)
+    {
+        std::cout << temp.get_content() << "\n";
+
+    }
 }
