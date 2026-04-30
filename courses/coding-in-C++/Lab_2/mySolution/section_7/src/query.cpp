@@ -4,6 +4,23 @@
 */
 
 #include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+#include "query.hpp"
+#include "web_page.hpp"
+
+
+// Helper function to convert a string to lowercase
+static std::string to_lower(std::string str)
+{
+    // std::transform applies a function (::tolower) to each character
+    // and writes the result back into the same string
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
+}
+
 
 /**
  * @brief Calculates the average temperature.
@@ -15,3 +32,49 @@
  * @param[in,out] value_count  Number of elements in values
  * @return                 Average of valid values
  */
+std::vector<WebPage> Query::find_match(const std::vector<WebPage>& pages, const std::string& query)
+{
+    // This vector will store all matching WebPage objects
+    std::vector<WebPage> results;
+
+    // Convert the search query to lowercase once
+    // so we can perform case-insensitive comparisons
+    std::string query_lower = to_lower(query);
+
+    // Loop over each WebPage in the input vector
+    // & = we do NOT copy the object (efficient)
+    // const = we do NOT modify the object (read-only access)
+    for (const WebPage& page : pages)
+    {
+        // Convert the page content to lowercase
+        std::string content_lower = to_lower(page.get_content());
+
+        // Get the content (text) of the current page
+        // and search for the query string inside it
+        //
+        // std::string::find() returns:
+        // - the position (0, 1, 2, ...) if the substring is found
+        // - std::string::npos if the substring is NOT found
+        if (content_lower.find(query_lower) != std::string::npos)
+        {
+            // If the query string is found in the page content,
+            // we add this page to the results vector
+            // This creates a COPY of the WebPage object
+            // and stores it inside "results"
+            results.push_back(page);
+        }
+    }
+
+    // Return all matching pages
+    return results;
+}
+
+void Query::sort_results(std::vector<WebPage>& results)
+{
+
+}
+
+void Query::print_results(std::vector<WebPage>& results) const
+{
+
+}

@@ -20,7 +20,7 @@ public:
     Query();  // Constructor
     ~Query(); // Destructor
 
-    std::vector<WebPage> find_match(std::vector<WebPage>& pages);
+    std::vector<WebPage> find_match(const std::vector<WebPage>& pages, const std::string& query);
     void sort_results(std::vector<WebPage>& results);
     void print_results(std::vector<WebPage>& results) const;
 };

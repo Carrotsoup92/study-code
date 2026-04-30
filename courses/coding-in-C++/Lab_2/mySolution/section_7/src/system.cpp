@@ -33,6 +33,7 @@ void System::print_statistics(void) const
 
 void System::print_web_pages(std::vector<WebPage>& pages) const
 {
+    // return 1 if vector is empty
     if (pages.empty() == 1)
     {
         return;
