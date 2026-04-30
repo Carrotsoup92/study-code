@@ -20,7 +20,7 @@ private:
 public:
     WebPage():name(""),content(""), ranking(0) // Constructor
     {
-        // count_web_pages++;
+        count_web_pages++;
         // std::cout << "Constructor\n" << count_web_pages << "\n";  
     }
     ~WebPage() = default; // Destructor
