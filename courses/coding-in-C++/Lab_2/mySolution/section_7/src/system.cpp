@@ -7,6 +7,7 @@
 
 #include "system.hpp"
 #include "web_page.hpp"
+#include "query.hpp"
 
 int System::total_queries = 0;
 
@@ -25,11 +26,17 @@ void System::add_query(void)
     total_queries += 1;
 }
 
-void System::print_statistics(void) const
-{
+
+void System::print_statistics(Query query) const
+{   
+    std::cout << "Webpages:      ";
     std::cout << WebPage::get_count_web_pages() << "\n";
+    std::cout << "Total queries: ";
     std::cout << total_queries << "\n";
+    std::cout << "Total results: ";
+    std::cout << query.get_count_results() << "\n";
 }
+
 
 void System::print_web_pages(std::vector<WebPage>& pages) const
 {

@@ -45,14 +45,20 @@ int main()
     System system;
     Query query;
 
-    system.print_statistics();
+    system.print_statistics(query);
     // system.print_web_pages(pages);
 
-    std::vector<WebPage> results = query.find_match(pages, "apple");
+    for (int index = 0; index < 2; index++)
+    {
+        query.get_input(system);
 
-    query.sort_results(results);
-    query.print_results(results);
+        std::vector<WebPage> results = query.find_match(pages);
+
+        query.sort_results(results);
+        query.print_results(results);
+    }
     
-     
+    system.print_statistics(query);
+
     return 0;
 }

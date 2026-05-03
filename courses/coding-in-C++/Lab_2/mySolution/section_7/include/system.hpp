@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "web_page.hpp"
+#include "query.hpp"
 
 class System {
 private:
@@ -21,7 +22,7 @@ public:
     ~System() = default; // Destructor
 
     void add_query(void);
-    void print_statistics(void) const;
+    void print_statistics(Query query) const;
     void print_web_pages(std::vector<WebPage>& pages) const;
 };
 

@@ -7,9 +7,56 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 #include "query.hpp"
 #include "web_page.hpp"
+#include "system.hpp"
+
+
+void Query::get_input(System& system)
+{
+    system.add_query();
+
+    while (true)
+    {
+        std::cout << "please enter a query: ";
+
+        std::getline(std::cin, query);  
+        
+        if(query.empty())
+        {
+        }
+        else 
+        {
+            break;
+        }
+    }
+    
+    std::cout << "Please enter a numer: ";
+
+    while (true)
+    {
+        if (!(std::cin >> number_results))
+        {
+            std::cout << "You entern an invalid input. Please enter a number: ";
+            std::cin.clear();
+            // ignore all characters till \n include \n
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        else if (number_results < 1)
+        {
+            std::cout << "You entern an nagative number. Please enter a number: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } 
+        else
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+}
 
 
 // Helper function to convert a string to lowercase
@@ -21,7 +68,6 @@ static std::string to_lower(std::string str)
     return str;
 }
 
-
 /**
  * @brief Calculates the average temperature.
  *
@@ -32,14 +78,14 @@ static std::string to_lower(std::string str)
  * @param[in,out] value_count  Number of elements in values
  * @return                 Average of valid values
  */
-std::vector<WebPage> Query::find_match(const std::vector<WebPage>& pages, const std::string& query)
+std::vector<WebPage> Query::find_match(const std::vector<WebPage>& pages)
 {
     // This vector will store all matching WebPage objects
     std::vector<WebPage> results;
 
     // Convert the search query to lowercase once
     // so we can perform case-insensitive comparisons
-    std::string query_lower = to_lower(query);
+    std::string query_lower = to_lower(this->query);
 
     // Loop over each WebPage in the input vector
     // & = we do NOT copy the object (efficient)
@@ -87,13 +133,31 @@ void Query::sort_results(std::vector<WebPage>& results)
         });
 }
 
-void Query::print_results(std::vector<WebPage>& results) const
+
+void Query::print_results(std::vector<WebPage>& results)
 {
     std::cout << "All results:\n";
 
-    for (const WebPage& temp : results)
-    {
-        std::cout << temp.get_content() << "\n";
+    int length = 0;
 
+    if(results.size() < this->number_results)
+    {
+        length = results.size();
     }
+    else
+    {
+        length = this->number_results;
+    }
+
+    for (int index = 0; index < length; index++)
+    {
+        std::cout << results.at(index).get_content() << "\n";
+    }
+    
+    this->count_results += length;
+}
+
+int Query::get_count_results() const
+{
+    return this->count_results;
 }
