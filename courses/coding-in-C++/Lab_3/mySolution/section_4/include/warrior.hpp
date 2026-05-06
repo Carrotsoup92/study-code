@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-# include "character.hpp";
+#include "character.hpp"
 
 class Warrior : public Character
 {
@@ -17,11 +17,21 @@ private:
 protected:
     int weapon_skill_points;
 public:
-    Warrior(): weapon_skill_points(0)
+    Warrior(std::string name): Character(name), weapon_skill_points(0)
     {};  // Constructor
     ~Warrior() = default; // Destructor
 
-    void generate_wsp();
+    std::string get_type() const override
+    {
+        return "Warrior";
+    }
+    
+    void generate_wsp(int points)
+    {
+        weapon_skill_points += points;
+    }
+
+    void print_stats() const;
 };
 
 #endif  

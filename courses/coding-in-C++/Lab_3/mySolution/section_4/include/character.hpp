@@ -20,7 +20,7 @@ private:
 protected:
     int health_points;
     int level;
-    const int MAX_LEVEL = 10;
+    static constexpr int MAX_LEVEL = 10;
     Weapon* weapon;
     Inventory inventory;
 public:
@@ -28,8 +28,10 @@ public:
     {};  // Constructor
     ~Character() = default; // Destructor
 
+    virtual std::string get_type() const = 0;
+    virtual void print_stats() const;
+
     void level_up();
-    void prints_stats() const;
 };
 
 #endif

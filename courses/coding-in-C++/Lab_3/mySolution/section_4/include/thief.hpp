@@ -16,8 +16,11 @@ class Thief : protected Warrior
 private:
 protected:
 public:
-    Thief();  // Constructor
+    Thief(std::string name): Warrior(name)
+    {};  // Constructor
     ~Thief() = default; // Destructor
+
+    std::string get_type() const override;
 
     Thief& steal(Character target);
 };

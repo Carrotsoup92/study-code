@@ -12,7 +12,9 @@
 class Inventory 
 {
 private:
-    std::string items[10];
+    static constexpr int MAX_SLOTS = 10;
+    std::string items[MAX_SLOTS];
+
 public:
     Inventory();  // Constructor
     ~Inventory() = default; // Destructor
