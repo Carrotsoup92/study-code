@@ -13,6 +13,7 @@
 
 class Healer : protected Mage
 {
+    friend class Character;
 private:
 protected:
 public:
