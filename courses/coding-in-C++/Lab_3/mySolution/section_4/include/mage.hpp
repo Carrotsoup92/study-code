@@ -11,7 +11,7 @@
 
 #include "character.hpp"
 
-class Mage :public Character
+class Mage : public Character
 {
 private:
 protected:
@@ -20,8 +20,6 @@ public:
     Mage(std::string name): Character(name), mana_points(0)
     {};  // Constructor
     ~Mage() = default; // Destructor
-
-    Mage& generate_mp(int points);
     
     std::string get_type() const override
     {
@@ -29,6 +27,8 @@ public:
     }
 
     void print_stats() const override;
+
+    Mage& generate_mp(int points);
 };
 
 #endif

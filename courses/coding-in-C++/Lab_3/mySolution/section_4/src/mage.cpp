@@ -9,14 +9,7 @@
 #include "mage.hpp"
 
 /**
- * @brief Calculates the average temperature.
- *
- * Returns the arithmetic mean of all valid sensor values.
- * Invalid sensor values are ignored.
- *
- * @param[in] values       Array of sensor values
- * @param[in,out] value_count  Number of elements in values
- * @return                 Average of valid values
+ * @brief Print current stats
  */
 void Mage::print_stats() const
 {
@@ -26,7 +19,7 @@ void Mage::print_stats() const
 
     Character::print_stats();
 
-    cout << "WSP: " << this->mana_points << "\n";
+    cout << "MP: " << this->mana_points << "\n";
 }
 
 

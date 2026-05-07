@@ -8,13 +8,18 @@
 
 #include "character.hpp"
 #include "warrior.hpp"
+#include "mage.hpp"
 
 
 int main() {
     
     Warrior warrior("Dude");
+    // Mage mage("Mate");
 
-    warrior.print_stats();
+    warrior.generate_wsp(10)
+           .print_stats();
+
+    // mage.print_stats();
 
     return 0;
 }

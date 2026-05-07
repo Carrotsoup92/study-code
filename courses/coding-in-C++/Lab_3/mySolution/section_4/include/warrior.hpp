@@ -31,9 +31,9 @@ public:
         return "Warrior";
     }
     
-    Warrior& generate_wsp(int points);
-
     void print_stats() const override;
+
+    Warrior& generate_wsp(int points);
 };
 
 #endif  
