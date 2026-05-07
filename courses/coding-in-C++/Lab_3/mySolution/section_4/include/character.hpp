@@ -16,22 +16,26 @@ class Weapon;
 class Character 
 {
 private:
-    std::string name;
-protected:
     int health_points;
+protected:
+    std::string name;
     int level;
     static constexpr int MAX_LEVEL = 10;
+    int level_ep;
     Weapon* weapon;
-    Inventory inventory;
+    //Inventory inventory;
+
+    void level_up();
 public:
-    Character(std::string name): name(name), health_points(100), level(1)
+    Character(std::string name): name(name), health_points(100), level(1), level_ep(0), weapon(nullptr)
     {};  // Constructor
-    ~Character() = default; // Destructor
+    virtual ~Character() = default; // Destructor
 
     virtual std::string get_type() const = 0;
     virtual void print_stats() const;
 
-    void level_up();
+    Character& generate_level_ep(int ep);
+    Character& attack(Character& target);
 };
 
 #endif

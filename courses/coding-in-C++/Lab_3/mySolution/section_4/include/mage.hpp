@@ -11,17 +11,24 @@
 
 #include "character.hpp"
 
-class Mage :protected Character
+class Mage :public Character
 {
 private:
 protected:
     int mana_points;
 public:
-    Mage():mana_points(0)
+    Mage(std::string name): Character(name), mana_points(0)
     {};  // Constructor
     ~Mage() = default; // Destructor
 
-    void generate_mp();
+    Mage& generate_mp(int points);
+    
+    std::string get_type() const override
+    {
+        return "Mage";
+    }
+
+    void print_stats() const override;
 };
 
 #endif

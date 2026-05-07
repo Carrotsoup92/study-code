@@ -11,7 +11,7 @@
 
 #include <warrior.hpp>
 
-class Thief : protected Warrior
+class Thief : public Warrior
 {
 private:
 protected:
@@ -20,9 +20,18 @@ public:
     {};  // Constructor
     ~Thief() = default; // Destructor
 
-    std::string get_type() const override;
 
-    Thief& steal(Character target);
+    /**
+     * @brief Return the type of the character 
+     * 
+     * @return      string     Name of the type
+     */
+    std::string get_type() const override
+    {
+        return "Thief";
+    }
+
+    Thief& steal(Character& target);
 };
 
 #endif

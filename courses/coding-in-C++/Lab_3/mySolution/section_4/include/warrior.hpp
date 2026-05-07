@@ -21,17 +21,19 @@ public:
     {};  // Constructor
     ~Warrior() = default; // Destructor
 
+    /**
+     * @brief Return the type of the character 
+     * 
+     * @return      string     Name of the type
+     */
     std::string get_type() const override
     {
         return "Warrior";
     }
     
-    void generate_wsp(int points)
-    {
-        weapon_skill_points += points;
-    }
+    Warrior& generate_wsp(int points);
 
-    void print_stats() const;
+    void print_stats() const override;
 };
 
 #endif  

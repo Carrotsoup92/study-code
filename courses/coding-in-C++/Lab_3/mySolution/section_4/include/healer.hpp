@@ -9,18 +9,23 @@
 #include <iostream>
 #include <string>
 
-#include <mage.hpp>
+#include "mage.hpp"
 
-class Healer : protected Mage
+class Healer : public Mage
 {
-    friend class Character;
 private:
 protected:
 public:
-    Healer();  // Constructor
+    Healer(std::string name): Mage(name)
+    {};  // Constructor
     ~Healer() = default; // Destructor
 
-    Healer& heal(Character target);
+    std::string get_type() const override
+    {
+        return "Healer";
+    }
+
+    Healer& heal(Character& target);
 };
 
 #endif
