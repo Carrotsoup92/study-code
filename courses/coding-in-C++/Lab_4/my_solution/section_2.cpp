@@ -59,8 +59,18 @@ int main() {
     Circle circle(3.0);
     Rectangle rectangle(3.0, 3.0);
 
-    std::cout << circle.area();
-    std::cout << rectangle.area();
+    std::cout << circle.area() << "\n";
+    std::cout << rectangle.area() << "\n";
+
+    Base *array[4] = {new Circle(8),
+                    new Circle(5), 
+                    new Rectangle(4,4), 
+                    new Rectangle(5,5)};
+
+    for (int index = 0; index < 4; index++)
+    {
+        std::cout << array[index]->area() << "\n";
+    }
 
     return 0;
 }
