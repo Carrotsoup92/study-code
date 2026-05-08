@@ -15,8 +15,6 @@ void Mage::print_stats() const
 {
     using namespace std;
 
-    cout << "Class: " << get_type() << "\n";
-
     Character::print_stats();
 
     cout << "MP: " << this->mana_points << "\n";

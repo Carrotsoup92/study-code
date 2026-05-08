@@ -19,7 +19,7 @@ protected:
 public:
     Warrior(std::string name): Character(name), weapon_skill_points(0)
     {};  // Constructor
-    ~Warrior() = default; // Destructor
+    virtual ~Warrior() = default; // Destructor
 
     /**
      * @brief Return the type of the character 

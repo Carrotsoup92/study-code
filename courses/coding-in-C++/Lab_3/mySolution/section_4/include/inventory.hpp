@@ -15,14 +15,14 @@ private:
     std::string items[MAX_SLOTS];
 
 public:
-    Inventory();  // Constructor
+    Inventory() = default;  // Constructor
     ~Inventory() = default; // Destructor
 
     Inventory& get_inventory();
     bool is_emty() const;
     bool is_full() const;
-    bool add_item(std::string[10]);
-    bool remove_last_item(std::string[10]);
+    Inventory& add_item(std::string);
+    bool remove_last_item();
 };
 
 #endif

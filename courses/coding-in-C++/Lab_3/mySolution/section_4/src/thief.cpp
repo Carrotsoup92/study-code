@@ -19,6 +19,6 @@
  */
 Thief& Thief::steal(Character& target)
 {
-    return *this
+    return *this;
 }
 

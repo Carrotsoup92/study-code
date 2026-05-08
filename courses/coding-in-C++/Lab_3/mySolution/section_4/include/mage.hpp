@@ -19,7 +19,7 @@ protected:
 public:
     Mage(std::string name): Character(name), mana_points(0)
     {};  // Constructor
-    ~Mage() = default; // Destructor
+    virtual ~Mage() = default; // Destructor
     
     std::string get_type() const override
     {

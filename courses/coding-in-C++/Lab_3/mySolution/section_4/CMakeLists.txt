@@ -20,6 +20,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(Library_for_main
     src/character.cpp
     src/warrior.cpp
+    src/mage.cpp
+    src/thief.cpp
 )
 
 # Include-folders

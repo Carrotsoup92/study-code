@@ -15,8 +15,6 @@ void Warrior::print_stats() const
 {
     using namespace std;
 
-    cout << "Class: " << get_type() << "\n";
-
     Character::print_stats();
 
     cout << "WSP: " << this->weapon_skill_points << "\n";
