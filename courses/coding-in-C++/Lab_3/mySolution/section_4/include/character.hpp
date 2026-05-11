@@ -38,7 +38,6 @@ public:
     virtual void print_stats() const;
 
     Character& generate_level_ep(int ep);
-    Character& attack(Character& target);
     Character& set_weapon(Weapon* weapon);
 };
 
