@@ -16,7 +16,7 @@ void Character::print_stats() const
 {
     using namespace std;
 
-    cout << "--------------------------" << "\n";
+    cout << "--------STATS----------" << "\n";
     cout << "Class: " << get_type() << "\n";
     cout << "Name:  " << this->name << "\n";
     cout << "Level: " << this->level << "\n";
@@ -29,8 +29,8 @@ void Character::print_stats() const
     }
     else
     {
-            cout << "Weapon: " << this->weapon->get_name() << "\n";
-            cout << "Weapon damage: " << this->weapon->get_damage_value() << "\n";
+        cout << "Weapon: " << this->weapon->get_name() << "\n";
+        cout << "Weapon damage: " << this->weapon->get_damage_value() << "\n";
 
     }
     //inventory
@@ -81,6 +81,15 @@ void Character::level_up()
  */
 Character& Character::attack(Character& target)
 {
+    if (this->weapon == nullptr)
+    {
+        std::cout << "Attack usless, no weapon!\n";
+    }
+    else
+    {
+        target.health_points -= this->weapon->get_damage_value();
+    }
+
     return *this;
 }
 

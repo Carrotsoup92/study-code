@@ -18,6 +18,8 @@ void Warrior::print_stats() const
     Character::print_stats();
 
     cout << "WSP: " << this->weapon_skill_points << "\n";
+
+    cout << "------------------" << "\n";
 }
 
 

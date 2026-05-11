@@ -18,6 +18,9 @@ void Mage::print_stats() const
     Character::print_stats();
 
     cout << "MP: " << this->mana_points << "\n";
+
+    cout << "------------------" << "\n";
+
 }
 
 

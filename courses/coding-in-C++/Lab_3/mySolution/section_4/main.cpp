@@ -26,6 +26,9 @@ int main() {
            .print_stats();
 
     mage->generate_mp(20)
+        .attack(*thief)
+        .set_weapon(new Weapon("wand", 10))
+        .attack(*thief)
         .print_stats();
 
     thief->generate_wsp(15)
