@@ -68,6 +68,8 @@ void Character::level_up()
     {
         this->level += 1;
         this->level_ep -= 50;
+
+        std::cout << this->name << " get level up." << "\n";
     }
 }
 
@@ -83,11 +85,12 @@ Character& Character::attack(Character& target)
 {
     if (this->weapon == nullptr)
     {
-        std::cout << "Attack usless, no weapon!\n";
+        std::cout << this->name << " cannot attck, no weapon!\n";
     }
     else
     {
         target.health_points -= this->weapon->get_damage_value();
+        std::cout << this->name << " attacked: " << target.name << "\n";
     }
 
     return *this;

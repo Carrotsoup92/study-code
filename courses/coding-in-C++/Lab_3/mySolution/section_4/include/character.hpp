@@ -12,10 +12,14 @@
 #include "inventory.hpp"
 #include "weapon.hpp"
 
+class Healer;
+
 class Character 
 {
 private:
     int health_points;
+
+    friend class Healer;
 protected:
     std::string name;
     int level;
