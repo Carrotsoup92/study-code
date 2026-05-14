@@ -1,5 +1,5 @@
 /*
-* File: charackter.cpp
+* File: character.cpp
 * Description: Shot discription of the file.
 */
 
@@ -33,7 +33,19 @@ void Character::print_stats() const
         cout << "Weapon damage: " << this->weapon->get_damage_value() << "\n";
 
     }
-    //inventory
+    cout << "Items in inventory: " << this->inventory.get_count_items() << "/" << this->inventory.get_max_stots() << "\n";
+    
+    for (int index = 0; index < this->inventory.get_count_items(); index++)
+    {
+        cout << this->inventory.get_items()[index] << ", ";
+    }
+    cout << "\n";
+}
+
+
+std::string Character::get_type() const 
+{
+    return "Character";
 }
 
 
@@ -49,10 +61,14 @@ void Character::print_stats() const
 Character& Character::generate_level_ep(int ep)
 {
     this->level_ep += ep;
+    const int level_step = 50;
 
-    if (level_ep > 50)
+    while (this->level_ep >= level_step)
     {
-        Character::level_up();
+        if (level_ep > level_step)
+        {
+            Character::level_up();
+        }
     }
 
     return *this;
@@ -90,12 +106,22 @@ Character& Character::attack(Character& target)
     else
     {
         target.health_points -= this->weapon->get_damage_value();
+        generate_level_ep(this->weapon->get_damage_value());
+
         std::cout << this->name << " attacked: " << target.name << "\n";
     }
 
     return *this;
 }
 
+
+/**
+ * @brief Set Weapon of the character
+ * 
+ * @param[in]   weapon      New weapon of the character
+ * 
+ * @return      pointer     Pointer to the character
+ */
 Character& Character::set_weapon(Weapon* weapon)
 {
     this->weapon = weapon;

@@ -9,21 +9,21 @@
 #include "healer.hpp"
 
 /**
- * @brief Calculates the average temperature.
- *
- * Returns the arithmetic mean of all valid sensor values.
- * Invalid sensor values are ignored.
- *
- * @param[in] values       Array of sensor values
- * @param[in,out] value_count  Number of elements in values
- * @return                 Average of valid values
+ * @brief Heal a character at a amount of HP
+ * *
+ * @param[in]   target      The HP of this character get increace
+ * 
+ * @return      pointer     Pointer to the character
  */
 Healer& Healer::heal(Character& target)
 {
     if (mana_points > 30)
     {
         target.health_points += 20;
-        std::cout << this->name << " healed: " << target.name << "/n";
+        mana_points -= 30;
+        generate_level_ep(this->weapon->get_damage_value());
+
+        std::cout << this->name << " healed: " << target.name << "\n";
     }
     else
     {

@@ -10,6 +10,7 @@
 #include <string>
 
 #include "character.hpp"
+#include "inventory.hpp"
 
 class Warrior : public Character
 {

@@ -38,12 +38,22 @@ public:
         delete weapon;
     }; // Destructor
 
-    virtual std::string get_type() const = 0;
+    virtual std::string get_type() const;
     virtual void print_stats() const;
 
     Character& generate_level_ep(int ep);
     Character& attack(Character& target);
     Character& set_weapon(Weapon* weapon);
+
+    Inventory& get_inventory() 
+    {
+        return this->inventory;
+    }
+
+    int get_level() const
+    {
+        return this->level;
+    }
 };
 
 #endif
