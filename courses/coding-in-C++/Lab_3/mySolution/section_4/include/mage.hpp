@@ -1,0 +1,34 @@
+/*
+* File: mage.hpp
+* Description: Shot discription of the file.
+*/
+
+#ifndef MAGE_H
+#define MAGE_H
+
+#include <iostream>
+#include <string>
+
+#include "character.hpp"
+
+class Mage : public Character
+{
+private:
+protected:
+    int mana_points;
+public:
+    Mage(std::string name): Character(name), mana_points(0)
+    {};  // Constructor
+    virtual ~Mage() = default; // Destructor
+    
+    std::string get_type() const override
+    {
+        return "Mage";
+    }
+
+    void print_stats() const override;
+
+    Mage& generate_mp(int points);
+};
+
+#endif
