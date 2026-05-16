@@ -13,10 +13,10 @@ public:
     Base() = default;
     virtual ~Base() = default;
 
-    virtual double area() const
-    {
-        return 0.0;
-    }
+    virtual double area() const =0;
+    // {
+    //     return 0.0;
+    // }
     // Ja weil du unterklassen die funktion überschreiben müssen
     // virtual destructor 
 };

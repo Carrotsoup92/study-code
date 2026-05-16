@@ -63,9 +63,27 @@ Vector2D operator*(double multiplicant, const Vector2D& vec_2)
     return Vector2D(multiplicant * vec_2.get_x(), multiplicant * vec_2.get_y());
 }
 
-void vector_equal(const Vector2D& vec_1, const Vector2D& vec_2)
+std::ostream& operator<<(std::ostream& os, const Vector2D& vec)
 {
-    
+    os << "x: " << vec.get_x() << "\n"
+       << "y: " << vec.get_y() << "\n";
+    return os;
+}
+
+bool vector_equal(const Vector2D& vec_1, const Vector2D& vec_2) 
+{
+    double factor = std::pow(10.0, 3);
+    double vec_1_x = std::round(vec_1.get_x ()*factor) / factor;
+    double vec_2_x = std::round(vec_2.get_x ()*factor) / factor;
+    double vec_1_y = std::round(vec_1.get_y ()*factor) / factor;
+    double vec_2_y = std::round(vec_2.get_y ()*factor) / factor;
+
+    return (vec_1_x == vec_2_x) && (vec_1_y == vec_2_y);
+}
+
+bool vector_inequal(const Vector2D& vec_1, const Vector2D& vec_2) 
+{
+    return (!(vec_1.get_x() == vec_2.get_x()) && (vec_2.get_y() == vec_2.get_y()));
 }
 
 int main()
@@ -93,4 +111,19 @@ int main()
 
     vector_2 = 2.5 * vector_2;
     vector_2.print_vec();
+
+    std::cout << vector << vector_2;
+
+    Vector2D vector_4(5.2222236, 5);
+    Vector2D vector_5(5.2222234, 5);
+
+    if (vector_equal(vector_4, vector_5))
+    {
+        std::cout << "Vector equal!\n";
+    }
+
+    if (vector_inequal(vector, vector_2))
+    {
+        std::cout << "Vector inequal!\n";
+    }
 }
