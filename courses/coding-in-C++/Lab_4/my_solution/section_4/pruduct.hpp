@@ -78,7 +78,7 @@ private:
     double voltage;
 public:
     ElectricEngine(int id, std::string name, double weight, double temperature, bool visual_defect_status, double voltage):
-                    Product(id, name, weight, temperature, visual_defect_status, voltage)
+                    Product(id, name, weight, temperature, visual_defect_status), voltage(voltage)
                     {};
     ~ElectricEngine() = default;
 
