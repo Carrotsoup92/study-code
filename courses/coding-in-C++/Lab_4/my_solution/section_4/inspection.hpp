@@ -37,13 +37,15 @@ private:
     int max_weight;
     int min_weight;
 public:
-    WeightCheck(int max_weight, int min_weight): max_weight(max_weight), min_weight(min_weight) 
+    WeightCheck(): max_weight(0), min_weight(0) 
     {
         set_name("Weight_check");
     };
     ~WeightCheck() = default;
 
     void print_report() const override;
+
+    bool check_weight() const;
 };
 
 
