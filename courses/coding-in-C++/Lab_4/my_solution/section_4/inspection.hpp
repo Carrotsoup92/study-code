@@ -12,21 +12,24 @@
 class Inspection
 {
 private:
-    std::string name;
+    std::string type;
+    bool succes_last_inspection;
+    static int total_succes_rate;
 protected:
     int placeholder;
-    void set_name(std::string name)
+    void set_type(std::string type)
     {
-        this->name = name;
+        this->type = type;
     }
 public:
     Inspection();  // Constructor
     virtual~Inspection() = default; // Destructor
 
     virtual void print_report() const = 0;
-    std::string get_name() const
+
+    std::string get_type() const
     {
-        return this->name;
+        return this->type;
     }
 };
 
@@ -34,12 +37,12 @@ public:
 class WeightCheck : public Inspection
 {
 private:
-    int max_weight;
-    int min_weight;
+    double max_weight;
+    double min_weight;
 public:
     WeightCheck(): max_weight(0), min_weight(0) 
     {
-        set_name("Weight_check");
+        set_type("Weight_check");
     };
     ~WeightCheck() = default;
 
@@ -52,19 +55,34 @@ public:
 class VisualInspection :public Inspection
 {
 private:
-    /* data */
+    
 public:
-    VisualInspection(/* args */);
-    ~VisualInspection();
+    VisualInspection()
+    {
+        set_type("Visual_inspectition");
+    };
+    ~VisualInspection() = default;
+
+    void print_report() const override;
+
+    bool check_visual() const;
 };
 
 class TemperatureTest :public Inspection
 {
 private:
-    /* data */
+    double max_temperature;
+    double min_temperature;
 public:
-    TemperatureTest(/* args */);
-    ~TemperatureTest();
+    TemperatureTest()
+    {
+        set_type("Temperatuere_test");
+    };
+    ~TemperatureTest() = default;
+
+    void print_report() const override;
+
+    bool check_temperature() const;
 };
 
 

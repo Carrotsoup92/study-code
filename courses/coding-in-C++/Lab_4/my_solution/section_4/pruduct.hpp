@@ -20,6 +20,9 @@ private:
     double temperature;
     bool visual_defect_status;
 protected:
+    bool pass_weight_check;
+    bool pass_temperature_test;
+    bool pass_visual_inspection;
     WeightCheck *weight_check;
     TemperatureTest *temperature_test;
     VisualInspection *visual_inspection;
