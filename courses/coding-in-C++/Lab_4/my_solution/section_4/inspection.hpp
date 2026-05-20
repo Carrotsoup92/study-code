@@ -36,7 +36,7 @@ public:
 
 class WeightCheck : public Inspection
 {
-private:
+protected:
     double max_weight;
     double min_weight;
 public:
@@ -48,8 +48,47 @@ public:
 
     void print_report() const override;
 
-    bool check_weight() const;
+    virtual bool check_weight() const = 0;
 };
+
+
+class CombustionEngineWeightCheck : public WeightCheck
+{
+private:
+    /* data */
+public:
+    CombustionEngineWeightCheck()
+    {
+        this->max_weight = 100.44;
+        this->min_weight = 30.77;
+    };
+    ~CombustionEngineWeightCheck();
+
+    void print_report() const override;
+
+    bool check_weight() const override;
+};
+
+
+class ElectricEngineWeightCheck : public WeightCheck
+{
+private:
+    /* data */
+public:
+    ElectricEngineWeightCheck()
+    {
+        this->max_weight = 158.44;
+        this->min_weight = 98.77;
+    };
+    ~ElectricEngineWeightCheck();
+
+    void print_report() const override;
+
+    bool check_weight() const override;
+};
+
+
+
 
 
 class VisualInspection :public Inspection
