@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 
-#include "inspection.hpp"
 
 class Product
 {
@@ -20,23 +19,22 @@ private:
     double temperature;
     bool visual_defect_status;
 protected:
-    WeightCheck *weight_check;
-    TemperatureTest *temperature_test;
-    VisualInspection *visual_inspection;
 public:
     Product(int id, std::string name, double weight, double temperature, bool visual_defect_status): 
-            id(id), name(name), weight(weight), temperature(temperature), visual_defect_status(visual_defect_status)
-            {
-                weight_check = new WeightCheck();
-                temperature_test = new TemperatureTest();
-                visual_inspection= new VisualInspection();
-            };  // Constructor
-    virtual ~Product()
+            id(id), name(name), weight(weight), temperature(temperature),
+            visual_defect_status(visual_defect_status)
+            {};  // Constructor
+    virtual ~Product() = default; // Destructor
+
+    double get_id() const
     {
-        delete weight_check;
-        delete temperature_test;
-        delete visual_inspection;
-    }; // Destructor
+        return this->id;
+    }
+
+    std::string get_name() const
+    {   
+        return this->name;
+    }
 
     double get_weight() const
     {
@@ -53,7 +51,7 @@ public:
         return this->visual_defect_status;
     }
 
-    virtual void report() const;
+    virtual void report() const = 0;
 };
 
 
@@ -67,7 +65,8 @@ public:
                      {};
     ~CombustionEngine() = default;
 
-    void report() const override;
+    void report() const override
+    {};
 
 };
 
@@ -87,7 +86,8 @@ public:
         return this->voltage;
     }
 
-    void report() const override;
+    void report() const override
+    {};
 };
 
 
