@@ -19,6 +19,9 @@ private:
     double temperature;
     bool visual_defect_status;
 protected:
+    bool pass_weight_check;
+    bool pass_temperature_test;
+    bool pass_visual_inspection;
 public:
     Product(int id, std::string name, double weight, double temperature, bool visual_defect_status): 
             id(id), name(name), weight(weight), temperature(temperature),
