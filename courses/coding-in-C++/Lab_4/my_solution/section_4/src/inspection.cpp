@@ -9,9 +9,37 @@
 #include "../include/inspection.hpp"
 #include "../include/product.hpp"
 
+
+
 bool WeightCheck::inspect(const Product &product) const
 {
-    std::cout << this->get_name() << ": " << product.get_name(); 
+    bool passed = (product.get_weight() > this->min_weight) &&
+                    (product.get_weight() < this->max_weight);
 
-    return true;
+    std::cout << product.get_id() << "\n";
+
+
+    return passed;
+}
+ 
+
+bool VisualInspection::inspect(const Product &product) const
+{
+    bool passed = product.get_visual_defect_status();
+    
+    std::cout << product.get_id() << this->get_name() << "\n";
+    
+    return passed;
+}
+
+
+bool TemperatureTest::inspect(const Product &product) const
+{
+    bool passed = (product.get_temperature() > this->min_temperature) &&
+                    (product.get_temperature() < this->max_temperature);
+
+    std::cout << product.get_id() << "\n";
+
+
+    return passed;
 }

@@ -40,6 +40,12 @@ public:
         return "Weight Check";
     }
 
+    /**
+     * @brief Checks the weight is in range
+     * 
+     * @param[in]  product  Product to check
+     * @return true is applicable, otherwise false
+     */
     bool inspect(const Product &product) const override;
 };
 
@@ -47,21 +53,47 @@ public:
 class VisualInspection : public Inspection
 {
 private:
-    /* data */
 public:
-    VisualInspection(/* args */)= default;
+    VisualInspection()= default;
     ~VisualInspection()= default;
+
+    std::string get_name() const override
+    {
+        return "Visual Inspection";
+    }
+
+    /**
+     * @brief Checks is an visual defect
+     * 
+     * @param[in]  product  Product to check
+     * @return true is applicable, otherwise false
+     */
+    bool inspect(const Product &product) const override;
 };
 
 class TemperatureTest : public Inspection
 {
 private:
-    /* data */
+    double max_temperature;
+    double min_temperature;
 public:
-    TemperatureTest(/* args */)= default;
+    TemperatureTest(double max_temperaurem, double min_temperature) : max_temperature(max_temperature),
+                                                                    min_temperature(min_temperature)
+    {};
     ~TemperatureTest() = default;
+
+    std::string get_name() const override
+    {
+        return "Temperature Test";
+    }
+
+    /**
+     * @brief Checks the temperature is in range
+     * 
+     * @param[in]  product  Product to check
+     * @return true is applicable, otherwise false
+     */
+    bool inspect(const Product &product) const override;
 };
-
-
 
 #endif

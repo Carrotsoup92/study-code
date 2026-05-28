@@ -14,17 +14,17 @@ class Product
 {
 private:
     int id;
-    std::string name;
     double weight;
     double temperature;
     bool visual_defect_status;
+    std::string name;
 protected:
     bool pass_weight_check;
     bool pass_temperature_test;
     bool pass_visual_inspection;
 public:
-    Product(int id, std::string name, double weight, double temperature, bool visual_defect_status): 
-            id(id), name(name), weight(weight), temperature(temperature),
+    Product(int id, double weight, double temperature, bool visual_defect_status): 
+            id(id), weight(weight), temperature(temperature),
             visual_defect_status(visual_defect_status)
             {};  // Constructor
     virtual ~Product() = default; // Destructor
@@ -32,11 +32,6 @@ public:
     double get_id() const
     {
         return this->id;
-    }
-
-    std::string get_name() const
-    {   
-        return this->name;
     }
 
     double get_weight() const
@@ -54,6 +49,8 @@ public:
         return this->visual_defect_status;
     }
 
+    virtual std::string get_name() const = 0;
+
     virtual void report() const = 0;
 };
 
@@ -63,10 +60,15 @@ class CombustionEngine : public Product
 private:
     /* data */
 public:
-    CombustionEngine(int id, std::string name, double weight, double temperature, bool visual_defect_status):
-                     Product(id, name, weight, temperature, visual_defect_status)
+    CombustionEngine(int id, double weight, double temperature, bool visual_defect_status):
+                     Product(id, weight, temperature, visual_defect_status)
                      {};
     ~CombustionEngine() = default;
+
+    std::string get_name() const override
+    {
+        return "Combustion Engine";
+    }
 
     void report() const override
     {};
@@ -79,8 +81,8 @@ class ElectricEngine : public Product
 private:
     double voltage;
 public:
-    ElectricEngine(int id, std::string name, double weight, double temperature, bool visual_defect_status, double voltage):
-                    Product(id, name, weight, temperature, visual_defect_status), voltage(voltage)
+    ElectricEngine(int id, double weight, double temperature, bool visual_defect_status, double voltage):
+                    Product(id, weight, temperature, visual_defect_status), voltage(voltage)
                     {};
     ~ElectricEngine() = default;
 
@@ -89,6 +91,10 @@ public:
         return this->voltage;
     }
 
+    std::string get_name() const override
+        {
+            return "Electric Engine";
+        }
     void report() const override
     {};
 };
