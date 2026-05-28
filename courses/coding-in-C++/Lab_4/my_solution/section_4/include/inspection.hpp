@@ -20,7 +20,7 @@ public:
     ~Inspection() = default; // Destructor
 
     virtual std::string get_name() const = 0;
-    virtual bool inspect( const Product &product) const = 0;
+    virtual bool inspect(Product &product) = 0;
 };
 
 
@@ -46,7 +46,7 @@ public:
      * @param[in]  product  Product to check
      * @return true is applicable, otherwise false
      */
-    bool inspect(const Product &product) const override;
+    bool inspect(Product &product) override;
 };
 
 
@@ -68,7 +68,7 @@ public:
      * @param[in]  product  Product to check
      * @return true is applicable, otherwise false
      */
-    bool inspect(const Product &product) const override;
+    bool inspect(Product &product) override;
 };
 
 class TemperatureTest : public Inspection
@@ -77,7 +77,7 @@ private:
     double max_temperature;
     double min_temperature;
 public:
-    TemperatureTest(double max_temperaurem, double min_temperature) : max_temperature(max_temperature),
+    TemperatureTest(double max_temperature, double min_temperature) : max_temperature(max_temperature),
                                                                     min_temperature(min_temperature)
     {};
     ~TemperatureTest() = default;
@@ -93,7 +93,7 @@ public:
      * @param[in]  product  Product to check
      * @return true is applicable, otherwise false
      */
-    bool inspect(const Product &product) const override;
+    bool inspect(Product &product) override;
 };
 
 #endif

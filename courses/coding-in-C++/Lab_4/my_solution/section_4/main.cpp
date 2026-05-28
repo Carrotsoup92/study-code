@@ -36,6 +36,7 @@ int main()
     for (Product *temp : p_pruducts)
     {
        pipline.inspect(*temp);
+       temp->report();
     }
 
     return 0;

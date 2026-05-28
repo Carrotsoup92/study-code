@@ -36,7 +36,7 @@ public:
      * 
      * @param[in]   product     Product to run inspections
      */
-    void inspect(const Product &product);
+    void inspect(Product &product);
 };
 
 #endif

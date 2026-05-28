@@ -20,6 +20,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(Library_for_main
     src/inspection.cpp
     src/pipline.cpp
+    src/product.cpp 
     
 )
 

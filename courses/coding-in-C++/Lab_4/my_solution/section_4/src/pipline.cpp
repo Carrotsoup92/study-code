@@ -12,7 +12,7 @@ void Pipline::add_inspection(Inspection *inspection)
     this->inspetions.push_back(inspection);
 }
 
-void Pipline::inspect(const Product &procuct)
+void Pipline::inspect(Product &procuct)
 {
     for (Inspection *temp : inspetions)
     {
