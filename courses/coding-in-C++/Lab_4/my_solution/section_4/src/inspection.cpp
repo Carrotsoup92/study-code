@@ -8,6 +8,16 @@
 #include "../include/product.hpp"
 
 
+void Inspection::report() const
+{
+    using namespace std;
+
+    cout << "=== "<< this->get_name() << " Report ===\n";
+    cout << "Pass last inspechtion: " << boolalpha << this->passed_last_check << "\n";
+    cout << "Successrate: " << this->overal_checks/this->count_succsess_checks << "\n;"
+  
+}
+
 
 bool WeightCheck::inspect(Product &product)
 {
@@ -16,9 +26,16 @@ bool WeightCheck::inspect(Product &product)
 
     product.set_pass_weight_check(passed);
 
+    this->passed_last_check = passed;
+    this->overal_checks++;
+    if (passed == true)
+    {
+        count_succsess_checks++;
+    }
+
     return passed;
 }
- 
+
 
 bool VisualInspection::inspect(Product &product)
 {

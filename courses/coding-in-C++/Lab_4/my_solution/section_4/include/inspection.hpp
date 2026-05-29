@@ -15,12 +15,17 @@ class Inspection
 {
 private:
 protected:
+    int overal_checks;
+    int count_succsess_checks;
+    bool passed_last_check;
 public:
-    Inspection() = default;  // Constructor
+    Inspection(): overal_checks(0), count_succsess_checks(0), passed_last_check(false)
+    {}; // Constructor
     ~Inspection() = default; // Destructor
 
     virtual std::string get_name() const = 0;
     virtual bool inspect(Product &product) = 0;
+    virtual void report() const;
 };
 
 
@@ -47,6 +52,12 @@ public:
      * @return true is applicable, otherwise false
      */
     bool inspect(Product &product) override;
+
+
+    /**
+     *  @brief print report 
+     */
+    void report() const override;
 };
 
 

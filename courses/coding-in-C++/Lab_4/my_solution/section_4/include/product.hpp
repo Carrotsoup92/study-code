@@ -102,7 +102,6 @@ public:
         return "Combustion Engine";
     }
 
-    void report() const override;
 
 };
 
