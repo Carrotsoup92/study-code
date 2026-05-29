@@ -12,10 +12,14 @@
 #include "inventory.hpp"
 #include "weapon.hpp"
 
+class Healer;
+
 class Character 
 {
 private:
     int health_points;
+
+    friend class Healer;
 protected:
     std::string name;
     int level;
@@ -34,11 +38,21 @@ public:
         delete weapon;
     }; // Destructor
 
-    virtual std::string get_type() const = 0;
+    virtual std::string get_type() const;
     virtual void print_stats() const;
 
     Character& generate_level_ep(int ep);
     Character& set_weapon(Weapon* weapon);
+
+    Inventory& get_inventory() 
+    {
+        return this->inventory;
+    }
+
+    int get_level() const
+    {
+        return this->level;
+    }
 };
 
 #endif

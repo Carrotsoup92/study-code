@@ -22,6 +22,8 @@ add_library(Library_for_main
     src/warrior.cpp
     src/mage.cpp
     src/thief.cpp
+    src/healer.cpp 
+    src/inventory.cpp
 )
 
 # Include-folders

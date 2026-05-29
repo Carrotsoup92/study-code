@@ -9,7 +9,9 @@
 #include <iostream>
 #include <string>
 
+#include "character.hpp"
 #include "mage.hpp"
+
 
 class Healer : public Mage
 {

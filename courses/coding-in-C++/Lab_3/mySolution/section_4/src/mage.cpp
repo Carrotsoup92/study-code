@@ -19,11 +19,18 @@ void Mage::print_stats() const
 
     cout << "MP: " << this->mana_points << "\n";
 
-    cout << "------------------" << "\n";
+    cout << "-----------------------" << "\n";
 
 }
 
 
+/**
+ * @brief Add mana points
+ * 
+ * @param[in]   points      Add this points to mana
+ * 
+ * @return      pointer     Pointer to the character
+ */
 Mage& Mage::generate_mp(int points)
 {
     this->mana_points += points;
