@@ -4,9 +4,9 @@
 */
 
 
-#include "../include/inspection.hpp"
-#include "../include/product.hpp"
-#include "../include/pipline.hpp"
+#include "include/inspection.hpp"
+#include "include/product.hpp"
+#include "include/pipline.hpp"
 
 
 int main()
@@ -15,7 +15,7 @@ int main()
     CombustionEngine combustion_engine_2(1002, 40.4, 92.7, true);
 
     ElectricEngine electric_engine_1(2001, 55.4, 92.7, true, 12.5);
-    ElectricEngine electric_engine_2(2002, 92.4, 92.7, false, 11.3);
+    ElectricEngine electric_engine_2(2002, 92.4, 92.7, true, 11.3);
 
     Product *p_pruducts[] = {&combustion_engine_1,
                             &combustion_engine_2,
@@ -38,6 +38,11 @@ int main()
        pipline.inspect(*temp);
        temp->report();
     }
+
+
+    weight_check.report();
+    visual_inspection.report();
+    temperature_test.report();
 
     return 0;
 }

@@ -57,7 +57,7 @@ public:
     /**
      *  @brief print report 
      */
-    void report() const override;
+    // void report() const override;
 };
 
 
@@ -80,6 +80,11 @@ public:
      * @return true is applicable, otherwise false
      */
     bool inspect(Product &product) override;
+
+    /**
+     *  @brief print report 
+     */
+    // void report() const override;
 };
 
 class TemperatureTest : public Inspection
@@ -105,6 +110,11 @@ public:
      * @return true is applicable, otherwise false
      */
     bool inspect(Product &product) override;
+
+    /**
+     *  @brief print report 
+     */
+    // void report() const override;
 };
 
 #endif
