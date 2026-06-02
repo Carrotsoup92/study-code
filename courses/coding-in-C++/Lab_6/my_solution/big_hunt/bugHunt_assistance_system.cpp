@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 #include "bugHunt_assistance_system.hpp"
 
 DistanceSensor::DistanceSensor(const std::string &sensor_position,
@@ -10,7 +13,15 @@ DistanceSensor::DistanceSensor(const std::string &sensor_position,
 
 void DistanceSensor::set_distance(double distance_m)
 {
-    measured_distance_m = distance_m;
+    // negative check
+    if (distance_m < 0.0)
+    {
+        measured_distance_m = 0.0;
+    }
+    else 
+    {
+        measured_distance_m = distance_m;
+    }
 }
 
 void DistanceSensor::activate()
@@ -41,13 +52,13 @@ std::string DistanceSensor::get_position() const
 // operator falschherum
 bool DistanceSensor::operator<(const DistanceSensor &other) const
 {
-    return measured_distance_m > other.measured_distance_m;
+    return measured_distance_m < other.measured_distance_m;
 }
 
 // besser range prüfen
-bool DistanceSensor::is_exactly_at_warning_distance(double warning_distance) const
+bool DistanceSensor::is_at_warning_distance(double warning_distance) const
 {
-    return measured_distance_m == warning_distance; // prüfe double nicht mit ==
+    return measured_distance_m >= warning_distance; // prüfe double nicht mit ==
 }
 
 void DistanceSensor::print_info() const
@@ -70,7 +81,7 @@ void EmergencyBrakeSystem::evaluate(Vehicle &vehicle,
         return; //
     }
 
-    if (front_sensor.get_distance() > critical_distance_m)
+    if (front_sensor.get_distance() < critical_distance_m) // changed <
     {
         std::cout << "[EmergencyBrakeSystem] Emergency braking triggered.\n";
         vehicle.brake(30.0);
@@ -122,7 +133,7 @@ void AdaptiveCruiseControl::evaluate(Vehicle &vehicle,
     // < falsch
     if (front_sensor.get_distance() < minimum_distance_m)
     {
-        std::cout << "[AdaptiveCruiseControl] Vehicle ahead is close. Accelerating.\n";
+        std::cout << "[AdaptiveCruiseControl] Vehicle ahead is close. Reducing speed.\n"; // chaned reducing speed
         vehicle.accelerate(5.0);
     }
     else if (vehicle.get_speed() < target_speed_kmh)
@@ -144,6 +155,7 @@ ParkingAssistant::ParkingAssistant(double warning_distance)
 
 void ParkingAssistant::add_sensor(DistanceSensor *sensor)
 {
+    // pionter check
     sensors.push_back(sensor);
 }
 

@@ -3,9 +3,9 @@ using namespace std;
 
 int main() {
 
-    int arr[] = {7, 4, 5, 2};
-    int n = 4;
-    int temp;
+    int arr[] = {2, 4, 8, 2, 9, 7, 5, -6};
+    int n = 8;
+    int temp = 0;
 
     //Ausgabe des unsortierten Arrays
     cout << "Unsortiertes Array:";
@@ -17,6 +17,7 @@ int main() {
     for (int i = 0; i < n - 1; i++) {
 
         cout << "\nLauf " << (i+1) << ":" << endl;
+    
 
         for (int j = 0; j < n - 1 - i; j++) {
 
