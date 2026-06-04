@@ -7,19 +7,12 @@
 #include <string>
 
 template <typename T, typename N>
-void print_pair(std::string label_1, T, std::string Label_2, N)
+void print_pair(const std::string& label_1, const T& value_1, const std::string& Label_2,const  N& value_2)
 {
-      4 
+      std::cout << label_1 << ": " << value_1 << " | " << Label_2 << ": " << value_2 << "\n";
 }
-
-
-
 
 int main()
 {
-    int array_1[] = {5,6,8,4,9,2,3};
-    double array_2[] = {1.0, 5.6, 7.8, 0.6};
-
-    print(array_1);
-    print(array_2);
+    print_pair("Motor", "ESD", "Test", 9);
 }
