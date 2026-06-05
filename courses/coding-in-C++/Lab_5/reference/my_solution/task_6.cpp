@@ -42,6 +42,37 @@ void replce_neg_num(std::vector<int>& vec)
     }
 }
 
+void find_occurences(const std::vector<int>& vec, int number)
+{
+    int occurences = 0;
+
+    for (int temp : vec)
+    {
+        if (temp == number)
+        {
+            occurences ++;
+        }
+    }
+
+    std::cout << number << " occurs " << occurences << " times.\n";
+}
+
+void reverse_data(std::vector<int>& vec)
+{
+    reverse(vec.begin(), vec.end());
+}
+
+void print_single(std::vector<int>& vec)
+{
+    std::vector<int>::iterator it;
+
+    for (it = vec.begin(); it != vec.end(); ++it)
+    {
+        std::cout << *it << ", ";
+    }
+    std::cout << "\n";
+}
+
 int main()
 {
 
@@ -57,6 +88,11 @@ int main()
     print_vec(vec_2);
     replce_neg_num(vec_2);
     print_vec(vec_2);
+    find_occurences(vec_2, 8);
+    reverse_data(vec_2);
+    print_vec(vec_2);
+
+    print_single(vec);
 
     return 0;
 }
