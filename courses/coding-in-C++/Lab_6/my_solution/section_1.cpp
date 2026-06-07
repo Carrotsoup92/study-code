@@ -10,17 +10,28 @@
 class ConfigLoader
 {
 private:
-    /* data */
+    const int FILE_MIN_SIZE = 4;
 public:
-    ConfigLoader(/* args */);
-    ~ConfigLoader();
+    ConfigLoader(/* args */) = default;
+    ~ConfigLoader() = default;
 
     void load(std::string filename)
     {
-        if(filename.empty())
+
+        if(filename.size() <= FILE_MIN_SIZE )
         {
             throw std::runtime_error("missing filename");
         }
+
+        size_t size = filename.length();
+        std::string extension = filename.substr(size - static_cast<size_t>(FILE_MIN_SIZE), FILE_MIN_SIZE);
+
+        if(extension != ".cfg")
+        {
+            throw std::invalid_argument("wrong extenstion");
+        }
+
+        std::cout << filename << "\n";
     }
 };
 
@@ -33,11 +44,24 @@ int main() {
     {
         config.load("");
     }
+    catch(const std::runtime_error& error)
+    {
+        std::cout << error.what() << "\n";
+    }
+
+    try
+    {
+        config.load("huhu.fds");
+    }
+    catch(const std::invalid_argument& error)
+    {
+        std::cout << error.what() << "\n";
+    }
+    
     catch(const std::exception& error)
     {
-        std::cout << error.what();
+        std::cout << "Other error\n";
     }
-    catch(const std::exception error){};
 
-    return 0
+    return 0;
 }
