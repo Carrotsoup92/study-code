@@ -16,7 +16,7 @@ void Driver::remove_licence(std::string& licnese)
 
     if(none_of(this->licences.begin(), this->licences.end(), licnese))
     {
-        std::cout << "Error" << "\n";
+        std::cout << "Error remove_license" << "\n";
     }
     else
     {
@@ -30,5 +30,5 @@ void Driver::remove_licence(std::string& licnese)
 
 void Driver::rent_car(Vehicle& Vehicle)
 {
-    
+
 }
