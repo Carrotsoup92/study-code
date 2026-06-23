@@ -1,4 +1,6 @@
 
+#ifndef VEHICLE_HPP
+#define VEHICLE_HPP
 
 #include <string>
 
@@ -13,7 +15,7 @@ private:
     std::string assingned_driver;
 
 public:
-    Vehicle(std::string& brand, std::string& needed_licence)
+    Vehicle(const std::string& brand, const std::string& needed_licence)
     {
         this->id = this->id_count;
         this->brand = brand;
@@ -51,6 +53,11 @@ public:
     {
         return this->assingned_driver;
     }
+
+    void set_assigned_driver(std::string& driver)
+    {
+        this->assingned_driver = driver;
+    }
 };
 
 class PKW : public Vehicle
@@ -59,7 +66,7 @@ private:
     double comsunption;
 
 public:
-    PKW(std::string& brand, std::string& needed_licence, double consumption): Vehicle(brand, needed_licence)
+    PKW(const std::string& brand, const std::string& needed_licence, double consumption): Vehicle(brand, needed_licence)
     {
         this->comsunption = consumption;
     }
@@ -84,7 +91,7 @@ private:
     double battery_capacity;
 
 public:
-    ElectricCar(std::string& brand, std::string& needed_licence, double battery_capacity): Vehicle(brand, needed_licence)
+    ElectricCar(const std::string& brand, const std::string& needed_licence, double battery_capacity): Vehicle(brand, needed_licence)
     {
         this->battery_capacity = battery_capacity;
     }
@@ -102,6 +109,6 @@ public:
     }
 };
 
-
+#endif
 
 

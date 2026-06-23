@@ -1,4 +1,7 @@
 
+#ifndef DRIVER_HPP
+#define DRIVER_HPP
+
 
 #include <string>
 #include <vector>
@@ -13,7 +16,7 @@ private:
     int id;
     std::string name;
     std::vector<std::string> licences;
-    Vehicle* vehicle;
+    std::shared_ptr<Vehicle> vehicle;
 
 public:
     Driver(std::string name)
@@ -25,14 +28,18 @@ public:
         this->id_count++;
     };
 
-    std::string  get_name() const
+    std::string get_name() const
     {
         return this->name;
     }
 
-    void add_licens(std::string& license);
+    void add_licens(const std::string& license);
 
     void remove_licence(std::string& licnese);
 
-    void rent_car(Vehicle& vehicle);
+    void rent_car(std::shared_ptr<Vehicle> vehicle);
+
+    bool check_license(std::string& license);
 };
+
+#endif
