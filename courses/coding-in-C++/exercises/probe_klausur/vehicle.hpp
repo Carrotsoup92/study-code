@@ -19,7 +19,7 @@ public:
     {
         this->id = this->id_count;
         this->brand = brand;
-        this->aviable = false;
+        this->aviable = true;
         this->needed_licence = needed_licence;
         this->assingned_driver = "NONE";
 
