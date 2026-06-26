@@ -16,7 +16,12 @@ void Driver::add_licens(const std::string& license)
 void Driver::remove_licence(std::string& licnese)
 {
 
-    if(none_of(this->licences.begin(), this->licences.end(), licnese))
+    auto search = [&] (const std::string l)
+    {
+        return l == licnese;
+    };
+
+    if(none_of(this->licences.begin(), this->licences.end(), search))
     {
         std::cout << "Error remove_license" << "\n";
     }
@@ -32,27 +37,37 @@ void Driver::remove_licence(std::string& licnese)
 
 bool Driver::check_license(std::string& license)
 {
-    if (any_of(this->licences.begin(), this->licences.end(), license))
+
+    auto search = [&] (const std::string l)
+    {
+        return l == license;
+    };
+
+    if (any_of(this->licences.begin(), this->licences.end(), search))
     {
         return true;
     }
+    return false;
 }
 
-void Driver::rent_car(std::shared_ptr<Vehicle> Vehicle)
+void Driver::rent_car(std::shared_ptr<Vehicle> vehicle)
 {
     if(vehicle->get_aviable() == false)
     {
+        std::cout << "Error rent_car" << "\n";
         return;
     }
 
     if(this->vehicle != nullptr)
     {
+        std::cout << "Error rent_car" << "\n";
         return;
     }
 
     auto nessesary_lisence = vehicle->get_needed_license();
     if(check_license(nessesary_lisence) == false)
     {
+        std::cout << "Error rent_car" << "\n";
         return;
     }
 
